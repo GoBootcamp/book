@@ -22,8 +22,8 @@ consider [joining the Go Bootcamp Mailing List](http://groups.google.com/d/forum
 
 ## Schedule of the day
 
-* Tour of Go
-* Get setup
+* Tour of Go (Section~\ref{cha:basic_concepts})
+* Get setup (Section~\ref{cha:get_setup})
 
 Lunch break
 

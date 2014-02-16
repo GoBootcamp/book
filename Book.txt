@@ -8,3 +8,4 @@ intro.md
 basic_concepts.md
 methods_and_interfaces.md
 concurrency.md
+get_setup.md
