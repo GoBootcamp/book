@@ -47,6 +47,8 @@ Note how methods are defined outside of the struct, if you have
 been writing Object Oriented code for a while, you might find that a
 bit odd at first.
 
+[Go tour page](http://tour.golang.org/#52)
+
 ### Code organization
 
 Methods can be defined on any file in the package, but my
@@ -100,8 +102,6 @@ func (u *User) Greeting() string {
 	return fmt.Sprintf("Dear %s %s", u.FirstName, u.LastName)
 }
 ```
-[Exercise](http://tour.golang.org/#52)
-
 
 In fact, you can define a method on `any` type you define in your package, not just structs.
 You cannot define a method on a type from another package, or on a basic type.
@@ -169,7 +169,35 @@ There are two reasons to use a pointer receiver.
 First, to avoid copying the value on each method call (more efficient if the value type is a large struct).
 Second, so that the method can modify the value that its receiver points to.
 
-[Example](http://tour.golang.org/#54)
+```go
+package main
+
+import (
+    "fmt"
+    "math"
+)
+
+type Vertex struct {
+    X, Y float64
+}
+
+func (v *Vertex) Scale(f float64) {
+    v.X = v.X * f
+    v.Y = v.Y * f
+}
+
+func (v *Vertex) Abs() float64 {
+    return math.Sqrt(v.X*v.X + v.Y*v.Y)
+}
+
+func main() {
+    v := &Vertex{3, 4}
+    v.Scale(5)
+    fmt.Println(v, v.Abs())
+}
+```
+
+[Go tour page](http://tour.golang.org/#54)
 
 ## Interfaces
 \label{sec:interfaces}
@@ -178,7 +206,52 @@ An interface type is defined by a set of methods.
 
 A value of interface type can hold any value that implements those methods.
 
-[Example](http://tour.golang.org/#55)
+```go
+package main
+
+import (
+    "fmt"
+    "math"
+)
+
+type Abser interface {
+    Abs() float64
+}
+
+func main() {
+    var a Abser
+    f := MyFloat(-math.Sqrt2)
+    v := Vertex{3, 4}
+
+    a = f  // a MyFloat implements Abser
+    a = &v // a *Vertex implements Abser
+
+    // In the following line, v is a Vertex (not *Vertex)
+    // and does NOT implement Abser.
+    a = v
+
+    fmt.Println(a.Abs())
+}
+
+type MyFloat float64
+
+func (f MyFloat) Abs() float64 {
+    if f < 0 {
+        return float64(-f)
+    }
+    return float64(f)
+}
+
+type Vertex struct {
+    X, Y float64
+}
+
+func (v *Vertex) Abs() float64 {
+    return math.Sqrt(v.X*v.X + v.Y*v.Y)
+}
+```
+
+[Go tour page](http://tour.golang.org/#55)
 
 ### Interfaces are satisfied implicitly
 
@@ -223,11 +296,121 @@ func main() {
 
 [Package io](http://golang.org/pkg/io/) defines Reader and Writer; you don't have to.
 
-[Example](http://tour.golang.org/#56)
+[Go tour page](http://tour.golang.org/#56)
 
 ## Errors
 \label{sec:errors}
 
-## Exercises
-\label{sec:exercises}
+An error is anything that can describe itself as an error string. The idea is captured by the predefined, built-in interface type, error, with its single method, `Error`, returning a string:
 
+```go
+type error interface {
+    Error() string
+}
+```
+
+The `fmt` package's various print routines automatically know to call the method when asked to print an error.
+
+```go
+package main
+
+import (
+    "fmt"
+    "time"
+)
+
+type MyError struct {
+    When time.Time
+    What string
+}
+
+func (e *MyError) Error() string {
+    return fmt.Sprintf("at %v, %s",
+        e.When, e.What)
+}
+
+func run() error {
+    return &MyError{
+        time.Now(),
+        "it didn't work",
+    }
+}
+
+func main() {
+    if err := run(); err != nil {
+        fmt.Println(err)
+    }
+}
+```
+
+[Go tour page](http://tour.golang.org/#57)
+
+
+## Exercise: Errors
+\label{sec:exercise_errors}
+
+[Online assignment](http://tour.golang.org/#58)
+
+Copy your `Sqrt` function from the earlier exercises and modify it to return an `error` value.
+
+`Sqrt` should return a non-nil error value when given a negative number, as it doesn't support complex numbers.
+
+Create a new type
+
+```go
+type ErrNegativeSqrt float64
+```
+
+and make it an error by giving it a
+
+```go
+func (e ErrNegativeSqrt) Error() string
+```
+
+method such that `ErrNegativeSqrt(-2).Error()` returns 
+
+`cannot Sqrt negative number: -2`.
+
+Note: a call to `fmt.Print(e)` inside the Error method will send the program into an infinite loop. You can avoid this by converting e first: `fmt.Print(float64(e))`. Why?
+
+Change your `Sqrt` function to return an `ErrNegativeSqrt` value when given a negative number.
+
+
+### Solution
+
+```go
+package main
+
+import (
+	"fmt"
+)
+
+type ErrNegativeSqrt float64
+
+func (e ErrNegativeSqrt) Error() string {
+	return fmt.Sprintf("cannot Sqrt negative number: %g", float64(e))
+}
+
+func Sqrt(x float64) (float64, error) {
+	if x < 0 {
+		return 0, ErrNegativeSqrt(x)
+	}
+	// nested function to generate an approximation
+	approximation := func(z, x float64) float64 {
+		return z - ((z*z)-x)/(2*z)
+	}
+
+	z := 1.0
+	for i := 0; i < 10; i++ {
+		z = approximation(z, x)
+	}
+	return z, nil
+}
+
+func main() {
+	fmt.Println(Sqrt(2))
+	fmt.Println(Sqrt(-2))
+}
+```
+
+[Playground example](http://play.golang.org/p/gY0vYSRvSL)

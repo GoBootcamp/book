@@ -408,7 +408,7 @@ func main() {
 	}
 }
 ```
-[Go Playground](http://play.golang.org/p/me3tBkzd5S)
+[Playground Example](http://play.golang.org/p/me3tBkzd5S)
 
 Stop once the value has stopped changing (or only changes by a very small delta). See if that's more or fewer iterations.
 
@@ -444,7 +444,7 @@ func main() {
 	}
 }
 ```
-[Go Playground](http://play.golang.org/p/VBvPwQmDLI)
+[Playground Example](http://play.golang.org/p/VBvPwQmDLI)
 
 
 ## Structs
@@ -635,7 +635,7 @@ func main() {
 }
 ```
 
-[Go Playground](http://play.golang.org/p/87fdeul4H7)
+[Playground Example](http://play.golang.org/p/87fdeul4H7)
 
 Finally, you can use an ellipsis to use an implicit length when you
 pass the values:
@@ -651,7 +651,7 @@ func main() {
 }
 ```
 
-[Go Playground](http://play.golang.org/p/lxVUhtyJJP)
+[Playground Example](http://play.golang.org/p/lxVUhtyJJP)
 
 ### Printing arrays
 
@@ -675,7 +675,7 @@ func main() {
 }
 ```
 
-[Go Playground](http://play.golang.org/p/jsvGaXW6uH)
+[Playground Example](http://play.golang.org/p/jsvGaXW6uH)
 
 
 ### Multi-dimensional arrays
@@ -701,7 +701,7 @@ func main() {
 }
 ```
 
-[Go Playground](http://play.golang.org/p/L6faG4RMPx)
+[Playground Example](http://play.golang.org/p/L6faG4RMPx)
 
 
 Trying to access or set a value at an index that doesn't exist will
@@ -809,7 +809,7 @@ func main() {
 }
 ```
 
-[Go Playground](http://play.golang.org/p/2z_6hNt_Vg)
+[Playground Example](http://play.golang.org/p/2z_6hNt_Vg)
 
 [Go tour page](http://tour.golang.org/#33)
 
@@ -885,7 +885,7 @@ func main() {
 }
 ```
 
-[Go Playground](http://play.golang.org/p/fdh3daTttz)
+[Playground Example](http://play.golang.org/p/fdh3daTttz)
 
 And you can also append a slice to another using an ellipsis:
 
@@ -903,7 +903,7 @@ func main() {
 }
 ```
 
-[Go Playground](http://play.golang.org/p/CjR88q7CIo)
+[Playground Example](http://play.golang.org/p/CjR88q7CIo)
 
 Note that the ellipsis is a built-in feature of the language that means
 that the element is a collection.
@@ -941,7 +941,7 @@ func main() {
 }
 ```
 
-[Go Playground](http://play.golang.org/p/EvvVrOpPII)
+[Playground Example](http://play.golang.org/p/EvvVrOpPII)
 
 
 ### Nil slices
@@ -1061,7 +1061,7 @@ func main() {
 }
 ```
 
-[Go Playground](http://play.golang.org/p/T65dcE8fZ7)
+[Playground Example](http://play.golang.org/p/T65dcE8fZ7)
 
 
 You can also skip an iteration by using `continue`:
@@ -1084,7 +1084,7 @@ func main() {
 }
 ```
 
-[Go Playground](http://play.golang.org/p/TT1vfYKpOy)
+[Playground Example](http://play.golang.org/p/TT1vfYKpOy)
 
 
 ### Range and maps
@@ -1117,7 +1117,7 @@ Los Angeles has 3857799 inhabitants
 Chicago has 2714856 inhabitants
 ```
 
-[Go Playground](http://play.golang.org/p/rg5sc_Nl-P)
+[Playground Example](http://play.golang.org/p/rg5sc_Nl-P)
 
 ## Exercise: Slice
 
@@ -1220,7 +1220,7 @@ func main() {
 }
 ```
 
-[Go Playground](http://play.golang.org/p/iTzF6Y972V)
+[Playground Example](http://play.golang.org/p/iTzF6Y972V)
 
 
 ## Maps
@@ -1248,7 +1248,7 @@ func main() {
 }
 ```
 
-[Go Playground](http://play.golang.org/p/ttJ-3xgzuk)
+[Playground Example](http://play.golang.org/p/ttJ-3xgzuk)
 
 
 When not using map literals like above, maps must be created with make (not new) before use.
@@ -1378,4 +1378,4 @@ func main() {
 }
 ```
 
-[Go Playground](http://play.golang.org/p/M0bb5rWa7t)
+[Playground Example](http://play.golang.org/p/M0bb5rWa7t)
