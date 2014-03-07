@@ -6,7 +6,10 @@ Aimonetti](http://matt.aimonetti.net) from
 Hale, Google's [Francesc Campoy](http://twitter.com/campoy) and a long list of volunteers.
 
 The event was hosted by [General Assembly Los
-Angeles](https://generalassemb.ly/los-angeles).
+Angeles](https://generalassemb.ly/los-angeles) and food was provided by [Cloud
+Foundry](http://www.cloudfoundry.com/)
+
+Git hosting was provided by [GitHub](https://github.com)
 
 This companion book contains material written specifically
 for this event as well as content from Google under [Creative Commons Attribution
@@ -22,14 +25,17 @@ consider [joining the Go Bootcamp Mailing List](http://groups.google.com/d/forum
 
 ## Schedule of the day
 
-* Tour of Go (Section~\ref{cha:basic_concepts})
-* Get setup (Section~\ref{cha:get_setup})
+* Tour of Go 
+  * Basic concepts (Chapter~\ref{cha:basic_concepts})
+  * Methods and Interfaces (Chapter~\ref{cha:methods_and_interfaces})
+  * Concurrency (Chapter~\ref{cha:concurrency})
+* Get setup (Chapter~\ref{cha:get_setup})
 
 Lunch break
 
-* Get your feet wet
-* Tricks & Tips
-  - goimport
+* Get your feet wet (Chapter~\ref{cha:get_your_feet_wet})
+* Tips & Tricks
+  - goimports
   - File organization
   - OOP in Go
   - Documentation
