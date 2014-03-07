@@ -61,8 +61,8 @@ import "github.com/mattetti/goRailsYourself/crypto"
 
 We will see later on how to use the `go get` command to fetch the remote code before compiling our code.
 
-* [Package example](http://tour.golang.org/#4)
-* [Imports example](http://tour.golang.org/#5)
+* [Go tour page](http://tour.golang.org/#4)
+* [Go tour page 2](http://tour.golang.org/#5)
 
 ## Exported names
 \label{sec:exported_names}
@@ -70,6 +70,30 @@ We will see later on how to use the `go get` command to fetch the remote code be
 After importing a package, you can refer to the names it exports.
 In Go, a name is exported if it begins with a capital letter.
 `Foo` is an exported name, as is `FOO`. The name `foo` is not exported.
+
+See the difference bewteen:
+
+```go
+func main() {
+    fmt.Println(math.pi)
+}
+```
+
+and
+
+```go
+func main() {
+    fmt.Println(math.Pi)
+}
+```
+
+`Pi` is exported and can be accessed from outside the page, while `pi`
+isn't available.
+
+
+```
+cannot refer to unexported name math.pi
+```
 
 * [Exported names example](http://tour.golang.org/#6)
 
@@ -82,9 +106,87 @@ Functions can be defined to return any number of values.
 Return values are always typed.
 
 
+```go
+package main
+
+import "fmt"
+
+func add(x int, y int) int {
+    return x + y
+}
+
+func main() {
+    fmt.Println(add(42, 13))
+}
+```
+
 * [Function example](http://tour.golang.org/#7)
+
+In the following example, instead of declaring the type of each parameter,
+we only declare one type that applies to both.
+
+
+```go
+package main
+
+import "fmt"
+
+func add(x, y int) int {
+    return x + y
+}
+
+func main() {
+    fmt.Println(add(42, 13))
+}
+```
+
+
 * [Function with arguments sharing the same type](http://tour.golang.org/#8)
+
+In this example, the `swap` function return two string values.
+
+```go
+package main
+
+import "fmt"
+
+func swap(x, y string) (string, string) {
+    return y, x
+}
+
+func main() {
+    a, b := swap("hello", "world")
+    fmt.Println(a, b)
+}
+```
+
+
 * [Function with multiple results](http://tour.golang.org/#9)
+
+Functions take parameters. In Go, functions can return multiple "result parameters", not just a single value. They can be named and act just like variables.
+
+If the result parameters are named, a return statement without arguments returns the current values of the results.
+
+```go
+package main
+
+import "fmt"
+
+func split(sum int) (x, y int) {
+    x = sum * 4 / 9
+    y = sum - x
+    return
+}
+
+func main() {
+    fmt.Println(split(17))
+}
+```
+
+I personally recommend against using named return parameters because
+they often cause more confusion than they save time or help clarify your
+code.
+
 * [Function with named results](http://tour.golang.org/#10)
 
 ### Resources
@@ -184,12 +286,17 @@ Go has only one looping construct, the for loop.
 The basic for loop looks as it does in C or Java, except that the ( ) are gone (they are not even optional) and the { } are required.
 As in C or Java, you can leave the pre and post statements empty.
 
+
+* [For loop example](http://tour.golang.org/#18)
+
 ```go
 sum := 0
 for i := 0; i < 10; i++ {
     sum += i
 }
 ```
+
+* [For loop without pre/post statements](http://tour.golang.org/#19)
 
 ```go
 sum := 1
@@ -198,6 +305,8 @@ for ; sum < 1000; {
 }
 ```
 
+* [For loop as a `while` loop](http://tour.golang.org/#20)
+
 ```go
 sum := 1
 for sum < 1000 {
@@ -205,16 +314,14 @@ for sum < 1000 {
 }
 ```
 
+* [Infinite loop](http://tour.golang.org/#21)
+
 ```go
 for {
-  // do something in a loop forever  
+  // do something in a loop forever
 }
 ```
 
-* [For loop example](http://tour.golang.org/#18)
-* [For loop without pre/post statements](http://tour.golang.org/#19)
-* [For loop as a `while` loop](http://tour.golang.org/#20)
-* [Infinite loop](http://tour.golang.org/#21)
 
 ## If statement
 \label{sec:if-statement}
@@ -225,11 +332,18 @@ Variables declared by the statement are only in scope until the end of
 the `if`.
 Variables declared inside an if short statement are also available inside any of the else blocks.
 
+* [`If` statement example](http://tour.golang.org/#22)
+
+
 ```go
 if answer != 42 {
     return "Wrong answer"
 }
 ```
+
+
+* [`If` with a short statement](http://tour.golang.org/#23)
+
 
 ```go
 if err := foo(); err != nil {
@@ -237,16 +351,31 @@ if err := foo(); err != nil {
 }
 ```
 
-* [`If` statement example](http://tour.golang.org/#22)
-* [`If` with a short statement](http://tour.golang.org/#23)
 * [`If` and `else` example](http://tour.golang.org/#24)
 
 
-##Exercises
+## Exercise: Loops and Functions
 
-[Loops and Functions exercise](http://tour.golang.org/#25)
+[Assignment](http://tour.golang.org/#25)
 
-Work on the exercices and check the provided solution below.
+As a simple way to play with functions and loops, implement the square root function using Newton's method.
+
+In this case, Newton's method is to approximate `Sqrt(x`) by picking a starting point `z` and then repeating:
+
+\( z = z - \frac{z2 - x}{2z} \)
+
+To begin with, just repeat that calculation 10 times and see how close you get to the answer for various values (1, 2, 3, ...).
+
+Next, change the loop condition to stop once the value has stopped changing (or only changes by a very small delta). See if that's more or fewer iterations. How close are you to the math.Sqrt?
+
+Hint: to declare and initialize a floating point value, give it floating point syntax or use a conversion:
+
+```go
+z := float64(1)
+z := 1.0
+```
+
+Work on the exercises and check the provided solution below.
 
 **Solutions**:
 
@@ -601,11 +730,15 @@ bounds since our array only contains 2 elements and we are trying to
 access the 4th element of the array.
 
 Slices, the type that we are going to see next is more often used, due
-to the fact that we don't always know in advance the length of the array we need.
+  to the fact that we don't always know in advance the length of the array we need.
 
 
 ## Slices
 \label{sec:slices}
+
+Slices wrap arrays to give a more general, powerful, and convenient interface to sequences of data. Except for items with explicit dimension such as transformation matrices, most array programming in Go is done with slices rather than simple arrays.
+
+Slices hold references to an underlying array, and if you assign one slice to another, both refer to the same array. If a function takes a slice argument, changes it makes to the elements of the slice will be visible to the caller, analogous to passing a pointer to the underlying array.
 
 A slice points to an array of values and also includes a length.
 Slices can be resized since they are just a wrapper on top of another
@@ -683,7 +816,7 @@ func main() {
 
 ### Making slices
 
-Besides creating slices by passing the values right away, you can also use `make`.
+Besides creating slices by passing the values right away (array literal), you can also use `make`.
 You create an empty slice of a specific length and then populate each
 entry:
 
@@ -842,6 +975,8 @@ For more details about slices:
 * [Effective Go - slices](http://golang.org/doc/effective_go.html#slices)
 * [Append function documentation](http://golang.org/pkg/builtin/#append)
 * [Slice tricks](https://code.google.com/p/go-wiki/wiki/SliceTricks)
+* [Effective Go - slices](http://golang.org/doc/effective_go.html#slices)
+* [Effective Go - two-dimensional slices](http://golang.org/doc/effective_go.html#two_dimensional_slices)
 * [Go by example - slices](https://gobyexample.com/slices)
 
 
@@ -951,9 +1086,42 @@ func main() {
 
 [Go Playground](http://play.golang.org/p/TT1vfYKpOy)
 
-## Exercise
 
-[Go tour assignement](http://tour.golang.org/#38)
+### Range and maps
+
+Range can also be used on maps (Section~\ref{sec:maps}), in that case,
+the first parameter isn't an incremental integer but the map key:
+
+```go
+package main
+
+import "fmt"
+
+func main() {
+	cities := map[string]int{
+		"New York":    8336697,
+		"Los Angeles": 3857799,
+		"Chicago":     2714856,
+	}
+	for key, value := range cities {
+		fmt.Printf("%s has %d inhabitants\n", key, value)
+	}
+}
+```
+
+Which will output:
+
+```
+New York has 8336697 inhabitants
+Los Angeles has 3857799 inhabitants
+Chicago has 2714856 inhabitants
+```
+
+[Go Playground](http://play.golang.org/p/rg5sc_Nl-P)
+
+## Exercise: Slice
+
+[Assignement](http://tour.golang.org/#38) (can be done online)
 
 Implement `Pic`.
 It should return a slice of length dy, each element of which is a slice of dx 8-bit unsigned integers. 
@@ -1058,6 +1226,156 @@ func main() {
 ## Maps
 \label{sec:maps}
 
-## Exercise
+Maps are somewhat similar to what other languages call "dictionaries" or "hashes".
+
+A map maps keys to values. Here we are mapping string keys (actor names)
+to an integer value (age).
+
+```go
+package main
+
+import "fmt"
+
+func main() {
+	celebs := map[string]int{
+		"Nicolas Cage":       50,
+		"Selena Gomez":       21,
+		"Jude Law":           41,
+		"Scarlett Johansson": 29,
+	}
+
+	fmt.Printf("%#v", celebs)
+}
+```
+
+[Go Playground](http://play.golang.org/p/ttJ-3xgzuk)
 
 
+When not using map literals like above, maps must be created with make (not new) before use.
+The nil map is empty and cannot be assigned to.
+
+Assignments follow the Go convention and can be observed in the example
+below.
+
+```go
+package main
+
+import "fmt"
+
+type Vertex struct {
+	Lat, Long float64
+}
+
+var m map[string]Vertex
+
+func main() {
+	m = make(map[string]Vertex)
+	m["Bell Labs"] = Vertex{40.68433, -74.39967}
+	fmt.Println(m["Bell Labs"])
+}
+```
+
+When using map literals, if the top-level type is just a type name, you can omit it from the elements of the literal.
+
+
+```go
+package main
+
+import "fmt"
+
+type Vertex struct {
+	Lat, Long float64
+}
+
+var m = map[string]Vertex{
+	"Bell Labs": {40.68433, -74.39967},
+	// same as "Bell Labs": Vertex{40.68433, -74.39967}
+	"Google": {37.42202, -122.08408},
+}
+
+func main() {
+	fmt.Println(m)
+}
+```
+
+
+[Go tour page](http://tour.golang.org/#39)
+[Go tour page 2](http://tour.golang.org/#40)
+[Go tour page 3](http://tour.golang.org/#41)
+
+
+### Mutating maps
+
+Insert or update an element in map m:
+
+```go
+m[key] = elem
+```
+
+Retrieve an element:
+
+```go
+elem = m[key]
+```
+
+Delete an element:
+
+```go
+delete(m, key)
+```
+
+Test that a key is present with a two-value assignment:
+
+```go
+elem, ok = m[key]
+```
+
+If key is in m, ok is true. If not, ok is false and elem is the zero value for the map's element type.
+Similarly, when reading from a map if the key is not present the result is the zero value for the map's element type.
+
+
+[Go tour page](http://tour.golang.org/#42)
+
+
+### Resources
+
+* [Go team blog post on maps](http://blog.golang.org/go-maps-in-action)
+* [Effective Go - maps](http://golang.org/doc/effective_go.html#maps)
+
+## Exercise: Map
+
+[Online assignment](http://tour.golang.org/#43)
+
+Implement WordCount. 
+
+It should return a map of the counts of each "word" in the string `s`. 
+The `wc.Test` function runs a test suite against the provided function and prints success or failure.
+
+You might find [strings.Fields](http://golang.org/pkg/strings/#Fields) helpful.
+
+
+### Solution
+
+```go
+package main
+
+import (
+	"code.google.com/p/go-tour/wc"
+	"strings"
+)
+
+func WordCount(s string) map[string]int {
+	words := strings.Fields(s)
+	count := make(map[string]int)
+	for _, word := range words {
+		count[word]++
+	}
+	return count
+}
+
+func main() {
+	wc.Test(WordCount)
+}
+```
+
+[Go Playground](http://play.golang.org/p/M0bb5rWa7t)
