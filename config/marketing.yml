@@ -49,20 +49,12 @@ prices:
 authors:
   -
     name: "Matt Aimonetti"
-    image: /images/testimonial_1.png
+    image: /images/matt_aimonetti.jpg
     contact_email: "mattaimonetti@gmail.com"
     bio:
       |
-        Author bio [link](http://matt.aimonetti.net)
-
-faq:
-  -
-    question: "Question 1 text"
-    answer: "Answer 1 text"
-
-  -
-    question: "Question 2 text"
-    answer: "Answer 2 text"
+        Matt's [blog](http://matt.aimonetti.net)
+        and [startup](https://splice.com)
 
 testimonials:
   -
