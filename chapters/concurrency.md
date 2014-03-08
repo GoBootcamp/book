@@ -177,7 +177,7 @@ func main() {
 }
 ```
 
-[Playground example](http://play.golang.org/p/YKg79QtX2q)
+[See in playground](http://play.golang.org/p/YKg79QtX2q)
 
 The reason is that we are adding an extra value from inside a go
 routine, so our code doesn't block the main thread. The goroutine
@@ -437,4 +437,4 @@ the values of each tree. We just need to loop through the first tree
 read the value, get the value from the second channel (walking the
 second tree) and compare the two values.
 
-[Playground example](http://play.golang.org/p/I7FSCy_u8t)
+[See in playground](http://play.golang.org/p/I7FSCy_u8t)

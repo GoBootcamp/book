@@ -408,7 +408,7 @@ func main() {
 	}
 }
 ```
-[Playground Example](http://play.golang.org/p/me3tBkzd5S)
+[See in playground](http://play.golang.org/p/me3tBkzd5S)
 
 Stop once the value has stopped changing (or only changes by a very small delta). See if that's more or fewer iterations.
 
@@ -444,7 +444,7 @@ func main() {
 	}
 }
 ```
-[Playground Example](http://play.golang.org/p/VBvPwQmDLI)
+[See in playground](http://play.golang.org/p/VBvPwQmDLI)
 
 
 ## Structs
@@ -510,7 +510,7 @@ func main() {
 }
 ```
 
-[Go playground](http://play.golang.org/p/Fx--Pr6PTN)
+[See in playground](http://play.golang.org/p/Fx--Pr6PTN)
 
 * [Struct example](http://tour.golang.org/#26)
 * [Struct fields](http://tour.golang.org/#27)
@@ -540,8 +540,8 @@ client := &http.Client{}
 resp, err := client.Get("http://gobootcamp.com")
 ```
 
-
 * [Pointers example](http://tour.golang.org/#28)
+
 
 ## Initializing
 \label{sec:initializing_values}
@@ -579,6 +579,9 @@ func main() {
 	fmt.Println(*x == *y)
 }
 ```
+
+[See in playground](http://play.golang.org/p/XgECtFpCw6)
+
 
 Note that slices (Section~\ref{sec:slices}), maps (Section~\ref{sec:maps}) and channels (Section~\ref{sec:channels}) are usually allocated using `make`
 so the data structure these types are built upon can be initialized.
@@ -635,7 +638,7 @@ func main() {
 }
 ```
 
-[Playground Example](http://play.golang.org/p/87fdeul4H7)
+[See in playground](http://play.golang.org/p/87fdeul4H7)
 
 Finally, you can use an ellipsis to use an implicit length when you
 pass the values:
@@ -651,7 +654,7 @@ func main() {
 }
 ```
 
-[Playground Example](http://play.golang.org/p/lxVUhtyJJP)
+[See in playground](http://play.golang.org/p/lxVUhtyJJP)
 
 ### Printing arrays
 
@@ -675,7 +678,7 @@ func main() {
 }
 ```
 
-[Playground Example](http://play.golang.org/p/jsvGaXW6uH)
+[See in playground](http://play.golang.org/p/jsvGaXW6uH)
 
 
 ### Multi-dimensional arrays
@@ -701,7 +704,7 @@ func main() {
 }
 ```
 
-[Playground Example](http://play.golang.org/p/L6faG4RMPx)
+[See in playground](http://play.golang.org/p/L6faG4RMPx)
 
 
 Trying to access or set a value at an index that doesn't exist will
@@ -809,7 +812,7 @@ func main() {
 }
 ```
 
-[Playground Example](http://play.golang.org/p/2z_6hNt_Vg)
+[See in playground](http://play.golang.org/p/2z_6hNt_Vg)
 
 [Go tour page](http://tour.golang.org/#33)
 
@@ -885,7 +888,7 @@ func main() {
 }
 ```
 
-[Playground Example](http://play.golang.org/p/fdh3daTttz)
+[See in playground](http://play.golang.org/p/fdh3daTttz)
 
 And you can also append a slice to another using an ellipsis:
 
@@ -903,7 +906,7 @@ func main() {
 }
 ```
 
-[Playground Example](http://play.golang.org/p/CjR88q7CIo)
+[See in playground](http://play.golang.org/p/CjR88q7CIo)
 
 Note that the ellipsis is a built-in feature of the language that means
 that the element is a collection.
@@ -941,7 +944,7 @@ func main() {
 }
 ```
 
-[Playground Example](http://play.golang.org/p/EvvVrOpPII)
+[See in playground](http://play.golang.org/p/EvvVrOpPII)
 
 
 ### Nil slices
@@ -1061,7 +1064,7 @@ func main() {
 }
 ```
 
-[Playground Example](http://play.golang.org/p/T65dcE8fZ7)
+[See in playground](http://play.golang.org/p/T65dcE8fZ7)
 
 
 You can also skip an iteration by using `continue`:
@@ -1084,7 +1087,7 @@ func main() {
 }
 ```
 
-[Playground Example](http://play.golang.org/p/TT1vfYKpOy)
+[See in playground](http://play.golang.org/p/TT1vfYKpOy)
 
 
 ### Range and maps
@@ -1117,7 +1120,7 @@ Los Angeles has 3857799 inhabitants
 Chicago has 2714856 inhabitants
 ```
 
-[Playground Example](http://play.golang.org/p/rg5sc_Nl-P)
+[See in playground](http://play.golang.org/p/rg5sc_Nl-P)
 
 ## Exercise: Slice
 
@@ -1220,7 +1223,7 @@ func main() {
 }
 ```
 
-[Playground Example](http://play.golang.org/p/iTzF6Y972V)
+[See in playground](http://play.golang.org/p/iTzF6Y972V)
 
 
 ## Maps
@@ -1248,7 +1251,7 @@ func main() {
 }
 ```
 
-[Playground Example](http://play.golang.org/p/ttJ-3xgzuk)
+[See in playground](http://play.golang.org/p/ttJ-3xgzuk)
 
 
 When not using map literals like above, maps must be created with make (not new) before use.
@@ -1378,4 +1381,4 @@ func main() {
 }
 ```
 
-[Playground Example](http://play.golang.org/p/M0bb5rWa7t)
+[See in playground](http://play.golang.org/p/M0bb5rWa7t)
