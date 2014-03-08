@@ -149,6 +149,7 @@ TODO
 TODO:
 
 [gpm](https://github.com/pote/gpm)
+
 Set `GOPATH`
 
 ## Using errors
@@ -157,3 +158,13 @@ Set `GOPATH`
 TODO:
 
 errors as a pattern  errors vs exceptions
+
+## go imports
+
+TODO
+
+## Expvar
+
+TODO [package](http://golang.org/pkg/expvar/)
+
+

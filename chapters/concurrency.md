@@ -39,22 +39,24 @@ Goroutines run in the same address space, so access to shared memory must be syn
 package main
 
 import (
-    "fmt"
-    "time"
+	"fmt"
+	"time"
 )
 
 func say(s string) {
-    for i := 0; i < 5; i++ {
-        time.Sleep(100 * time.Millisecond)
-        fmt.Println(s)
-    }
+	for i := 0; i < 5; i++ {
+		time.Sleep(100 * time.Millisecond)
+		fmt.Println(s)
+	}
 }
 
 func main() {
-    go say("world")
-    say("hello")
+	go say("world")
+	say("hello")
 }
 ```
+
+[See in playground](http://play.golang.org/p/6PHXHha_Uv)
 
 [Go tour page](http://tour.golang.org/#65)
 
@@ -86,24 +88,26 @@ package main
 import "fmt"
 
 func sum(a []int, c chan int) {
-    sum := 0
-    for _, v := range a {
-        sum += v
-    }
-    c <- sum // send sum to c
+	sum := 0
+	for _, v := range a {
+		sum += v
+	}
+	c <- sum // send sum to c
 }
 
 func main() {
-    a := []int{7, 2, 8, -9, 4, 0}
+	a := []int{7, 2, 8, -9, 4, 0}
 
-    c := make(chan int)
-    go sum(a[:len(a)/2], c)
-    go sum(a[len(a)/2:], c)
-    x, y := <-c, <-c // receive from c
+	c := make(chan int)
+	go sum(a[:len(a)/2], c)
+	go sum(a[len(a)/2:], c)
+	x, y := <-c, <-c // receive from c
 
-    fmt.Println(x, y, x+y)
+	fmt.Println(x, y, x+y)
 }
 ```
+
+[See in playground](http://play.golang.org/p/E-U0Kfd4IE)
 
 [Go tour page](http://tour.golang.org/#66)
 
@@ -131,6 +135,9 @@ func main() {
 }
 ```
 
+[See in playground](http://play.golang.org/p/o52Ur8W4gE)
+
+
 But if you do:
 
 ```go
@@ -148,6 +155,8 @@ func main() {
 	fmt.Println(<-c)
 }
 ```
+
+[See in playground](http://play.golang.org/p/eczbew4bL8)
 
 You are getting a deadlock:
 
@@ -230,6 +239,8 @@ func main() {
 }
 ```
 
+[See in playground](http://play.golang.org/p/qtNyWuqESE)
+
 [Go tour page](http://tour.golang.org/#68)
 
 ## Select
@@ -269,6 +280,8 @@ func main() {
     fibonacci(c, quit)
 }
 ```
+
+[See in playground](http://play.golang.org/p/uf94rfXkva)
 
 ### Default case
 
@@ -311,7 +324,54 @@ func main() {
 }
 ```
 
+[See in playground](http://play.golang.org/p/s03PRK3FZe)
+
 [Go tour page](http://tour.golang.org/#70)
+
+### Timeout
+
+```go
+package main
+
+import (
+	"fmt"
+	"log"
+	"net/http"
+	"time"
+)
+
+func main() {
+	response := make(chan *http.Response, 1)
+	errors := make(chan *error)
+
+	go func() {
+		resp, err := http.Get("http://matt.aimonetti.net/")
+		fmt.Println(err)
+		if err != nil {
+			errors <- &err
+		}
+		response <- resp
+	}()
+	for {
+		select {
+		case r := <-response:
+			fmt.Printf("%s", r.Body)
+			return
+		case err := <-errors:
+			log.Fatal(err)
+		case <-time.After(200 * time.Millisecond):
+			fmt.Printf("Timed out!")
+			return
+		}
+	}
+}
+```
+
+[See in playground](http://play.golang.org/p/0NVG5RSfBF) but note that
+in playground, you won't get a response due to sandboxing.
+
+We are using the `time.After` call as a timeout measure to exit if the
+request didn't give a response within 200ms.
 
 ## Exercise: Equivalent Binary Trees
 \label{sec:exercise_equiv_bin_trees}
