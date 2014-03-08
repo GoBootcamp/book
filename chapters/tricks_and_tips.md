@@ -17,5 +17,18 @@ Hopefully this tips will get new users more productive faster.
 * always use `gofmt`. [@darkhelmetlive](https://twitter.com/darkhelmetlive)
 
 
+## Organization
+
+Go is a pretty easy programming language to learn but the hardest
+thing that developers at first is how to organize their code. Rails
+became popular for many reasons and scaffolding was one of them. It gave
+new developers clear directions and places to put their code and idioms
+to follow.
+
+To some extent, Go does the same thing by providing developers with
+great tools like [`go fmt`](http://blog.golang.org/go-fmt-your-code)
 
 Code organization, snippets (packaging)
+
+
+errors as a pattern  errors vs exceptions

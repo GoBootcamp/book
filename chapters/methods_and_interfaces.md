@@ -351,7 +351,8 @@ func main() {
 
 [Online assignment](http://tour.golang.org/#58)
 
-Copy your `Sqrt` function from the earlier exercises and modify it to return an `error` value.
+Copy your `Sqrt` function from the earlier exercises (Section~\ref{sec:exercise_loops_and_funcs}) and modify it to return an `error` value.
+
 
 `Sqrt` should return a non-nil error value when given a negative number, as it doesn't support complex numbers.
 
@@ -367,7 +368,7 @@ and make it an error by giving it a
 func (e ErrNegativeSqrt) Error() string
 ```
 
-method such that `ErrNegativeSqrt(-2).Error()` returns 
+method such that `ErrNegativeSqrt(-2).Error()` returns
 
 `cannot Sqrt negative number: -2`.
 

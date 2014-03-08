@@ -355,6 +355,7 @@ if err := foo(); err != nil {
 
 
 ## Exercise: Loops and Functions
+\label{sec:exercise_loops_and_funcs}
 
 [Assignment](http://tour.golang.org/#25)
 
@@ -1130,7 +1131,27 @@ Implement `Pic`.
 It should return a slice of length dy, each element of which is a slice of dx 8-bit unsigned integers. 
 When you run the program, it will display your picture, interpreting the integers as grayscale (well, bluescale) values.
 
-The choice of image is up to you. Interesting functions include `x^y`, `(x+y)/2`, and `x*y`.
+The choice of image is up to you. Interesting functions include:
+
+```
+x ^ y
+```
+
+```
+(x+y)/2
+```
+
+and
+
+```
+x*y
+```
+
+bonus function:
+
+```
+x^y+(x+y)/2
+```
 
 (You need to use a loop to allocate each `[]uint8` inside the `[][]uint8`.)
 (Use `uint8(intValue)` to convert between types.)
@@ -1278,6 +1299,8 @@ func main() {
 }
 ```
 
+[See in playground](http://play.golang.org/p/NW1ODtLARA)
+
 When using map literals, if the top-level type is just a type name, you can omit it from the elements of the literal.
 
 
@@ -1300,6 +1323,8 @@ func main() {
 	fmt.Println(m)
 }
 ```
+
+[See in playground](http://play.golang.org/p/nvGq-9gQ5z)
 
 
 [Go tour page](http://tour.golang.org/#39)
@@ -1333,8 +1358,12 @@ Test that a key is present with a two-value assignment:
 elem, ok = m[key]
 ```
 
+[See in playground](http://play.golang.org/p/pvfk9maSsh)
+
+
 If key is in m, ok is true. If not, ok is false and elem is the zero value for the map's element type.
 Similarly, when reading from a map if the key is not present the result is the zero value for the map's element type.
+
 
 
 [Go tour page](http://tour.golang.org/#42)
@@ -1349,7 +1378,7 @@ Similarly, when reading from a map if the key is not present the result is the z
 
 [Online assignment](http://tour.golang.org/#43)
 
-Implement WordCount. 
+Implement WordCount.
 
 It should return a map of the counts of each "word" in the string `s`. 
 The `wc.Test` function runs a test suite against the provided function and prints success or failure.
