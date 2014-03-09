@@ -11,8 +11,4 @@ concurrency.md
 get_setup.md
 get_your_feet_wet.md
 tricks_and_tips.md
-refactoring_with_tests.md
-best_practices.md
-useful_tools.md
-web_apis.md
-deployments.md
+exercises.md

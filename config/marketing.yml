@@ -58,16 +58,10 @@ authors:
 
 testimonials:
   -
-    name: "Person 1"
-    title: "Person 1 Title"
-    image: /images/testimonial_1.png
-    text: "Testimonial 1 text"
-
-  -
-    name: "Person 2"
-    title: "Person 2 Title"
-    gravatar_email: "info@softcover.io"
-    text: "Testimonial 2 text"
+    name: "Evan Phoenix"
+    title: "Code Chef / Mad Scientist"
+    image: /images/evan.jpeg
+    text: "I'm sure this book is great, but I didn't read it."
 
 marketing_content: ''
 

@@ -820,7 +820,7 @@ func main() {
 
 ### Making slices
 
-Besides creating slices by passing the values right away (array literal), you can also use `make`.
+Besides creating slices by passing the values right away (slice literal), you can also use `make`.
 You create an empty slice of a specific length and then populate each
 entry:
 
@@ -838,6 +838,8 @@ func main() {
 	// ["Santa Monica" "Venice" "Los Angeles"]
 }
 ```
+
+[See in playground](http://play.golang.org/p/CX5z79KYsK)
 
 It works by allocating a zeroed array and returning a slice that refers to that array.
 
@@ -968,6 +970,7 @@ func main() {
     // nil!
 }
 ```
+[See in playground](http://play.golang.org/p/inw1CunExE)
 
 [Go tour page](http://tour.golang.org/#35)
 

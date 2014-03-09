@@ -17,6 +17,14 @@ Hopefully this tips will get new users more productive faster.
 * always use `gofmt`. [@darkhelmetlive](https://twitter.com/darkhelmetlive)
 * read a lot of source code. [@DrNic](https://twitter.com/drnic)
 
+## goimports
+
+[Goimports](http://godoc.org/code.google.com/p/go.tools/cmd/goimports) is a tool that updates your Go import lines, adding missing ones and
+removing unreferenced ones.
+
+It acts the same as gofmt (drop-in replacement) but in addition to code
+formatting, also fixes imports.
+
 ## Organization
 
 Go is a pretty easy programming language to learn but the hardest
@@ -36,7 +44,7 @@ Instead you have to think in terms of composition and interfaces.
 
 The go team wrote a [short but good segment](http://golang.org/doc/effective_go.html#embedding) on this topic.
 
-Composition of something known by OOP progammers and Go supports it,
+Composition of something known by OOP programmers and Go supports it,
 here is an example:
 
 ```go
@@ -142,29 +150,75 @@ func main() {
 TODO
 
 
-## Dependency management
+## Dependency package management
 \label{sec:dependency_management}
 
+Unfortunately, Go doesn't ship with its own dependency package management system.
+Probably due to its roots in the C culture, packages aren't
+versioned and explicit version dependencies aren't addressed.
 
-TODO:
+The challenge is that if you have multiple developers on your
+project, you want all of them to be on the same version of your
+dependencies. Your dependencies might also have their own dependencies
+and you want to make sure everything is in a good state.
+It gets even tricker when you have multiple projects using different
+versions of the same dependency. This is typically the case in a [CI](http://en.wikipedia.org/wiki/Continuous_integration)
+environment.
 
-[gpm](https://github.com/pote/gpm)
+The Go community came up with a lot of different solutions for these
+problems. But for me, none are really great so at
+[Splice](https://splice.com) we went for the simplest working solution we found: [gpm](https://github.com/pote/gpm)
 
-Set `GOPATH`
+Gpm is a simple bash script, we end up [modifying it a little](https://gist.github.com/mattetti/9334318) so we could
+drop the script in each repo. The bash script uses a custom file called
+`Godeps` which lists the packages to install.
+
+When switching to a different project, we run the project `gpm` script
+to pull down or set the right revision of each package.
+
+In our CI environment, we set `GOPATH` to a project specific folder
+before running the test suite so packages aren't shared between
+projects.
 
 ## Using errors
 \label{sec:using_errors}
 
-TODO:
+Errors are very important pattern in Go and at first, new developers are
+surprised by the amount of functions returning a value and an error.
 
-errors as a pattern  errors vs exceptions
+Go doesn't have a concept of an exception like you might have seen in
+other programming languages. Go does have something called `panic` but
+as its name suggests they are really exceptional and shouldn't be
+rescued (that said, they can be).
 
-## go imports
+The error handling in Go seems cumbersome and repetitive at first, but
+quickly becomes part of the way we think. Instead of creating exceptions
+that bubble up and might or might not be handled or passed higher,
+errors are part of the response and designed to be handled by the
+caller. Whenever a function might generate an error, its response should
+contain an error param.
+
+[Andrew Gerrand](https://twitter.com/enneff) from the Go team wrote a great [blog post on errors](http://blog.golang.org/error-handling-and-go) I strongly recommend you read it.
+
+
+[Effective Go section on errors](http://golang.org/doc/effective_go.html#errors)
+
+
+## Return statements and conditions
 
 TODO
+
+
 
 ## Expvar
 
 TODO [package](http://golang.org/pkg/expvar/)
 
 
+## Set the build id using git's SHA
+
+TODO
+
+## Web resources
+
+* [Dave Cheney](https://twitter.com/davecheney) maintains a [list of resources](http://dave.cheney.net/resources-for-new-go-programmers) for new Go developers.

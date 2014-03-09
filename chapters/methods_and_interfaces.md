@@ -33,19 +33,23 @@ type User struct {
 	FirstName, LastName string
 }
 
-func (u *User) Greeting() string {
+func (u User) Greeting() string {
 	return fmt.Sprintf("Dear %s %s", u.FirstName, u.LastName)
 }
 
 func main() {
-	u := &User{"Matt", "Aimonetti"}
+	u := User{"Matt", "Aimonetti"}
 	fmt.Println(u.Greeting())
 }
 ```
 
+[See in playground](http://play.golang.org/p/ITVfJkCiwk])
+
+
 Note how methods are defined outside of the struct, if you have
 been writing Object Oriented code for a while, you might find that a
-bit odd at first.
+bit odd at first. The method on the `User` type could de defined
+anywhere in the package.
 
 [Go tour page](http://tour.golang.org/#52)
 
@@ -160,14 +164,43 @@ func main() {
 
 ### Method receivers
 
-Methods can be associated with a named type or a pointer to a named type.
+Methods can be associated with a named type (`User` for instance) or a pointer to a named type (`*User`).
 In the two type aliasing examples above, methods were defined on the
-value types (`MyStr` and `MyFloat`) but in the earlier example the
-method was defined on the `*User` pointer type.
+value types (`MyStr` and `MyFloat`).
 
 There are two reasons to use a pointer receiver.
 First, to avoid copying the value on each method call (more efficient if the value type is a large struct).
-Second, so that the method can modify the value that its receiver points to.
+The above example would have been better written as follows:
+
+```go
+package main
+
+import (
+	"fmt"
+)
+
+type User struct {
+	FirstName, LastName string
+}
+
+func (u *User) Greeting() string {
+	return fmt.Sprintf("Dear %s %s", u.FirstName, u.LastName)
+}
+
+func main() {
+	u := &User{"Matt", "Aimonetti"}
+	fmt.Println(u.Greeting())
+}
+```
+
+Remember that Go passes everything by value, meaning that when
+`Greeting()` is defined on the value type, every time you call
+`Greeting()`, you are copying the `User` struct. Instead when using a
+pointer, only the pointer is copied (cheap).
+
+[See in playground](http://play.golang.org/p/tEVN-vhyAi)
+
+The other reason why you might want to use a pointer is so that the method can modify the value that its receiver points to.
 
 ```go
 package main
@@ -197,59 +230,108 @@ func main() {
 }
 ```
 
+[See in playground](http://play.golang.org/p/F-PI1fj5AZ)
+
+In the example above, `Abs()` could be defined on the value type or the
+pointer since the method doesn't modify the receiver value (the vertex).
+However `Scale()` has to be defined on a pointer since it does modify the receiver.
+`Scale()` resets the values of for the `X` and `Y` fields.
+
+
 [Go tour page](http://tour.golang.org/#54)
 
 ## Interfaces
 \label{sec:interfaces}
 
 An interface type is defined by a set of methods.
-
 A value of interface type can hold any value that implements those methods.
+
+Here is a refactored version of our earlier example.
+This time we made the greeting feature more generic by defining a
+function called `Greet` which takes a param of interface type `Namer`.
+`Namer` is a new interface we defined which only defines one method:
+`Name()`. So `Greet()` will accept as param any value which has a
+`Name()` method defined.
+
+To make our `User` struct implement the interface, we defined
+a `Name()` method. We can now call `Greet` and pass our pointer to `User` type.
 
 ```go
 package main
 
 import (
-    "fmt"
-    "math"
+	"fmt"
 )
 
-type Abser interface {
-    Abs() float64
+type User struct {
+	FirstName, LastName string
+}
+
+func (u *User) Name() string {
+	return fmt.Sprintf("%s %s", u.FirstName, u.LastName)
+}
+
+type Namer interface {
+	Name() string
+}
+
+func Greet(n Namer) string {
+	return fmt.Sprintf("Dear %s", n.Name())
 }
 
 func main() {
-    var a Abser
-    f := MyFloat(-math.Sqrt2)
-    v := Vertex{3, 4}
-
-    a = f  // a MyFloat implements Abser
-    a = &v // a *Vertex implements Abser
-
-    // In the following line, v is a Vertex (not *Vertex)
-    // and does NOT implement Abser.
-    a = v
-
-    fmt.Println(a.Abs())
-}
-
-type MyFloat float64
-
-func (f MyFloat) Abs() float64 {
-    if f < 0 {
-        return float64(-f)
-    }
-    return float64(f)
-}
-
-type Vertex struct {
-    X, Y float64
-}
-
-func (v *Vertex) Abs() float64 {
-    return math.Sqrt(v.X*v.X + v.Y*v.Y)
+	u := &User{"Matt", "Aimonetti"}
+	fmt.Println(Greet(u))
 }
 ```
+
+[See in playground](http://play.golang.org/p/aXNaPqMbpV)
+
+
+We could now define a new type that would implement the same interface
+and our `Greet` function would still work.
+
+```go
+package main
+
+import (
+	"fmt"
+)
+
+type User struct {
+	FirstName, LastName string
+}
+
+func (u *User) Name() string {
+	return fmt.Sprintf("%s %s", u.FirstName, u.LastName)
+}
+
+type Customer struct {
+	Id       int
+	FullName string
+}
+
+func (c *Customer) Name() string {
+	return c.FullName
+}
+
+type Namer interface {
+	Name() string
+}
+
+func Greet(n Namer) string {
+	return fmt.Sprintf("Dear %s", n.Name())
+}
+
+func main() {
+	u := &User{"Matt", "Aimonetti"}
+	fmt.Println(Greet(u))
+	c := &Customer{42, "Francesc"}
+	fmt.Println(Greet(c))
+}
+```
+
+[See in playground](http://play.golang.org/p/16TYeeXHp5)
 
 [Go tour page](http://tour.golang.org/#55)
 
