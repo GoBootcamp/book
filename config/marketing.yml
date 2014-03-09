@@ -49,12 +49,13 @@ prices:
 authors:
   -
     name: "Matt Aimonetti"
-    image: /images/matt_aimonetti.jpg
+    image: /images/matt_aimonetti_sq_2013_small.jpg
     contact_email: "mattaimonetti@gmail.com"
     bio:
       |
-        Matt's [blog](http://matt.aimonetti.net)
-        and [startup](https://splice.com)
+        Matt is [Splice](https://splice.com) cofounder.
+        He's an active community member who contributed to many projects including the Go language. Matt is also a published author and who maintains his 
+         [personal blog](http://matt.aimonetti.net) about tech and programming in general.
 
 testimonials:
   -
