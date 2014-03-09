@@ -193,12 +193,13 @@ func main() {
 }
 ```
 
+[See in playground](http://play.golang.org/p/tEVN-vhyAi)
+
 Remember that Go passes everything by value, meaning that when
 `Greeting()` is defined on the value type, every time you call
 `Greeting()`, you are copying the `User` struct. Instead when using a
 pointer, only the pointer is copied (cheap).
 
-[See in playground](http://play.golang.org/p/tEVN-vhyAi)
 
 The other reason why you might want to use a pointer is so that the method can modify the value that its receiver points to.
 
@@ -206,27 +207,27 @@ The other reason why you might want to use a pointer is so that the method can m
 package main
 
 import (
-    "fmt"
-    "math"
+	"fmt"
+	"math"
 )
 
 type Vertex struct {
-    X, Y float64
+	X, Y float64
 }
 
 func (v *Vertex) Scale(f float64) {
-    v.X = v.X * f
-    v.Y = v.Y * f
+	v.X = v.X * f
+	v.Y = v.Y * f
 }
 
 func (v *Vertex) Abs() float64 {
-    return math.Sqrt(v.X*v.X + v.Y*v.Y)
+	return math.Sqrt(v.X*v.X + v.Y*v.Y)
 }
 
 func main() {
-    v := &Vertex{3, 4}
-    v.Scale(5)
-    fmt.Println(v, v.Abs())
+	v := &Vertex{3, 4}
+	v.Scale(5)
+	fmt.Println(v, v.Abs())
 }
 ```
 
@@ -349,36 +350,115 @@ It also encourages the definition of precise interfaces, because you don't have 
 package main
 
 import (
-    "fmt"
-    "os"
+	"fmt"
+	"os"
 )
 
 type Reader interface {
-    Read(b []byte) (n int, err error)
+	Read(b []byte) (n int, err error)
 }
 
 type Writer interface {
-    Write(b []byte) (n int, err error)
+	Write(b []byte) (n int, err error)
 }
 
 type ReadWriter interface {
-    Reader
-    Writer
+	Reader
+	Writer
 }
 
 func main() {
-    var w Writer
+	var w Writer
 
-    // os.Stdout implements Writer
-    w = os.Stdout
+	// os.Stdout implements Writer
+	w = os.Stdout
 
-    fmt.Fprintf(w, "hello, writer\n")
+	fmt.Fprintf(w, "hello, writer\n")
 }
 ```
+
+[See in playground](http://play.golang.org/p/vEmswt3Urz)
 
 [Package io](http://golang.org/pkg/io/) defines Reader and Writer; you don't have to.
 
 [Go tour page](http://tour.golang.org/#56)
+
+## Composition vs inheritance
+
+ Coming from an [OOP](http://en.wikipedia.org/wiki/Object-oriented_programming) background a lot of us are used to inheritance, something that isn't supported by Go.
+Instead you have to think in terms of composition and interfaces.
+
+The go team wrote a [short but good segment](http://golang.org/doc/effective_go.html#embedding) on this topic.
+
+Composition of something known by OOP programmers and Go supports it,
+here is an example:
+
+```go
+package main
+
+import (
+	"log"
+	"os"
+)
+
+type Job struct {
+	Command string
+	Logger  *log.Logger
+}
+
+func main() {
+	job := &Job{"demo", log.New(os.Stderr, "Job: ", log.Ldate)}
+	// same as
+	// job := &Job{Command: "demo", Logger: log.New(os.Stderr, "Job: ", log.Ldate)}
+	job.Logger.Print("test")
+}
+```
+
+[See in playground](http://play.golang.org/p/3yYJadlmHS)
+
+
+Our `Job` struct has a field called `Logger` which is a pointer to
+another type ([log.Logger](http://golang.org/pkg/log/#Logger))
+
+When we initialize our value, we set the logger so we can then call its
+`Print` function by chaining the calls: `job.Logger.Print()`
+
+
+But Go lets you go even further and use implicit composition.
+We can skip defining the field for our logger and now all the
+methods available on a pointer to `log.Logger` are available from our
+struct:
+
+```go
+package main
+
+import (
+	"log"
+	"os"
+)
+
+type Job struct {
+	Command string
+	*log.Logger
+}
+
+func main() {
+	job := &Job{"demo", log.New(os.Stderr, "Job: ", log.Ldate)}
+	job.Print("starting now...")
+}
+```
+
+Note that you still need to set the logger and that's often a good
+reason to use a constructor (custom constructor are used when you need
+to set a structure before using a value, see (Section~\ref{sec:custom_constructors}) ).
+What is really nice with the implicit composition is that it allows to
+easily and cheaply make your structs implement interfaces.
+Imagine that you have a function that takes variables implementing an
+interface with the `Print` method. My adding `*log.Logger` to your
+struct (and initializing it properly), your struct is now implementing
+the interface without you writing any custom methods.
+
+
 
 ## Errors
 \label{sec:errors}
@@ -478,14 +558,10 @@ func Sqrt(x float64) (float64, error) {
 	if x < 0 {
 		return 0, ErrNegativeSqrt(x)
 	}
-	// nested function to generate an approximation
-	approximation := func(z, x float64) float64 {
-		return z - ((z*z)-x)/(2*z)
-	}
 
 	z := 1.0
 	for i := 0; i < 10; i++ {
-		z = approximation(z, x)
+		z = z - ((z*z)-x)/(2*z)
 	}
 	return z, nil
 }
@@ -496,4 +572,13 @@ func main() {
 }
 ```
 
-[Playground example](http://play.golang.org/p/gY0vYSRvSL)
+[See in playground](http://play.golang.org/p/gY0vYSRvSL)
+
+**Tip**: When doing an infered declaration of a float, you can omit the
+decimal value and do the following:
+
+```go
+z := 1.
+// same as
+// z := 1.0
+```
