@@ -143,10 +143,54 @@ TODO [package](http://golang.org/pkg/expvar/)
 
 ## Set the build id using git's SHA
 
-TODO
+It's often very useful to burn a build id in your binaries.
+I personally like to use the SHA1 of the git commit I'm committing.
+You can get the short version of the sha1 of your latest commit by
+running the following `git` command from your repo:
+
+```bash
+git rev-parse --short HEAD
+```
+
+The next step is to set an exported variable that you will set at
+compilation time using the `-ldflags` flag.
+
+```go
+package main
+
+import "fmt"
+
+// compile passing -ldflags "-X main.Build <build sha1>"
+var Build string
+
+func main() {
+	fmt.Printf("Using build: %s\n", Build)
+}
+```
+
+[See in playground](http://play.golang.org/p/8wbsQ53ZV5)
+
+Save the above code in a file called `example.go`.
+If you run the above code, `Build` won't be set, for that you need to
+set it using `go build` and the `-ldflags`.
+
+```bash
+$ go build -ldflags "-X main.Build a1064bc" example.go
+```
+
+Now run it to make sure:
+
+```bash
+$ ./example
+Using build: a1064bc
+```
+
+Now, hook that into your deployment compilation process, I personally like [Rake](http://en.wikipedia.org/wiki/Rake_(software)) to
+do that, and this way, every time I compile, I think of [Jim Weirich](http://en.wikipedia.org/wiki/Jim_Weirich).
 
 
 ## How to see what packages my app imports
+\label{sec:list_imported_go_packages}
 
 It's often proactical to see what packages your app is importing.
 Unfortunatelly there isn't a simple way to do that, however it is doable
@@ -154,15 +198,17 @@ via the `go list` tool and using templates.
 
 Go to your app and run the following.
 
-```shell
-go list -f '{{join .Deps "\n"}}' |  xargs go list -f '{{if not .Standard}}{{.ImportPath}}{{end}}'
+```bash
+$ go list -f '{{join .Deps "\n"}}' |  
+  xargs go list -f '{{if not .Standard}}{{.ImportPath}}{{end}}'
 ```
 
 Here is an example with the cliresue refactoring example:
 
-```shell
+```bash
 $ cd $GOPATH/src/github.com/GoBootcamp/clirescue
-$ go list -f '{{join .Deps "\n"}}' |  xargs go list -f '{{if not .Standard}}{{.ImportPath}}{{end}}'
+$ go list -f '{{join .Deps "\n"}}' | 
+  xargs go list -f '{{if not .Standard}}{{.ImportPath}}{{end}}'
 github.com/GoBootcamp/clirescue/cmdutil
 github.com/GoBootcamp/clirescue/trackerapi
 github.com/GoBootcamp/clirescue/user
