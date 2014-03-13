@@ -145,6 +145,31 @@ TODO [package](http://golang.org/pkg/expvar/)
 
 TODO
 
+
+## How to see what packages my app imports
+
+It's often proactical to see what packages your app is importing.
+Unfortunatelly there isn't a simple way to do that, however it is doable
+via the `go list` tool and using templates.
+
+Go to your app and run the following.
+
+```shell
+go list -f '{{join .Deps "\n"}}' |  xargs go list -f '{{if not .Standard}}{{.ImportPath}}{{end}}'
+```
+
+Here is an example with the cliresue refactoring example:
+
+```shell
+$ cd $GOPATH/src/github.com/GoBootcamp/clirescue
+$ go list -f '{{join .Deps "\n"}}' |  xargs go list -f '{{if not .Standard}}{{.ImportPath}}{{end}}'
+github.com/GoBootcamp/clirescue/cmdutil
+github.com/GoBootcamp/clirescue/trackerapi
+github.com/GoBootcamp/clirescue/user
+github.com/codegangsta/cli
+```
+
+
 ## Web resources
 
 * [Dave Cheney](https://twitter.com/davecheney) maintains a [list of resources](http://dave.cheney.net/resources-for-new-go-programmers) for new Go developers.
