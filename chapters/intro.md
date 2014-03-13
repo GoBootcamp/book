@@ -4,7 +4,7 @@ The very first Go Bootcamp event was put together by [Matt
 Aimonetti](http://matt.aimonetti.net) from
 [Splice](https://splice.com) with the support of a long list of volunteers.
 
-* [Fransec Campoy](https://twitter.com/francesc)
+* [Francesc Campoy](https://twitter.com/francesc)
 * [Mitchell Hashimoto](https://twitter.com/mitchellh)
 * [Evan Phoenix](https://twitter.com/evanphx)
 * [Jeremy Saenz](https://twitter.com/codegangsta)
