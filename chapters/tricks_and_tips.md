@@ -142,6 +142,7 @@ TODO [package](http://golang.org/pkg/expvar/)
 
 
 ## Set the build id using git's SHA
+\label{sec:git_sha_in_go_binary}
 
 It's often very useful to burn a build id in your binaries.
 I personally like to use the SHA1 of the git commit I'm committing.
@@ -215,6 +216,12 @@ github.com/GoBootcamp/clirescue/user
 github.com/codegangsta/cli
 ```
 
+If you want the list to also contain standard packages, edit the
+template and use:
+
+```bash
+$ go list -f '{{join .Deps "\n"}}' |  xargs go list -f '{{.ImportPath}}'
+```
 
 ## Web resources
 
