@@ -71,7 +71,7 @@ After importing a package, you can refer to the names it exports.
 In Go, a name is exported if it begins with a capital letter.
 `Foo` is an exported name, as is `FOO`. The name `foo` is not exported.
 
-See the difference bewteen:
+See the difference between:
 
 ```go
 func main() {
@@ -857,7 +857,7 @@ cities[0] = "Santa Monica"
 
 As explained above, a slice is seating on top of an array, in this case,
 the array is empty and the slice can't set a value in the referred array.
-There is a way to do that tho, and that is by using the `append`
+There is a way to do that though, and that is by using the `append`
 function:
 
 ```go
@@ -1128,7 +1128,7 @@ Chicago has 2714856 inhabitants
 
 ## Exercise: Slice
 
-[Assignement](http://tour.golang.org/#38) (can be done online)
+[Assignment](http://tour.golang.org/#38) (can be done online)
 
 Implement `Pic`.
 It should return a slice of length dy, each element of which is a slice of dx 8-bit unsigned integers. 

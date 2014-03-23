@@ -193,8 +193,8 @@ do that, and this way, every time I compile, I think of [Jim Weirich](http://en.
 ## How to see what packages my app imports
 \label{sec:list_imported_go_packages}
 
-It's often proactical to see what packages your app is importing.
-Unfortunatelly there isn't a simple way to do that, however it is doable
+It's often practical to see what packages your app is importing.
+Unfortunately there isn't a simple way to do that, however it is doable
 via the `go list` tool and using templates.
 
 Go to your app and run the following.
@@ -204,7 +204,7 @@ $ go list -f '{{join .Deps "\n"}}' |
   xargs go list -f '{{if not .Standard}}{{.ImportPath}}{{end}}'
 ```
 
-Here is an example with the cliresue refactoring example:
+Here is an example with the clirescue refactoring example:
 
 ```bash
 $ cd $GOPATH/src/github.com/GoBootcamp/clirescue
