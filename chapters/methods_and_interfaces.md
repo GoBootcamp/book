@@ -574,7 +574,7 @@ func main() {
 
 [See in playground](http://play.golang.org/p/gY0vYSRvSL)
 
-**Tip**: When doing an infered declaration of a float, you can omit the
+**Tip**: When doing an inferred declaration of a float, you can omit the
 decimal value and do the following:
 
 ```go

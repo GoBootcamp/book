@@ -376,7 +376,7 @@ request didn't give a response within 200ms.
 ## Exercise: Equivalent Binary Trees
 \label{sec:exercise_equiv_bin_trees}
 
-[Online Assignement](http://tour.golang.org/#72)
+[Online Assignment](http://tour.golang.org/#72)
 
 There can be many different binary trees with the same sequence of values stored at the leaves. For example, here are two binary trees storing the sequence 1, 1, 2, 3, 5, 8, 13.
 
@@ -417,7 +417,7 @@ Then read and print 10 values from the channel. It should be the numbers `1`, `2
 
 ### Solution
 
-If you print `tree.New(1)` you will see the the following tree:
+If you print `tree.New(1)` you will see the following tree:
 
 ```
 ((((1 (2)) 3 (4)) 5 ((6) 7 ((8) 9))) 10)
