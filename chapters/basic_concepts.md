@@ -905,7 +905,7 @@ func main() {
 	otherCities := []string{"Santa Monica", "Venice"}
 	cities = append(cities, otherCities...)
 	fmt.Printf("%q", cities)
-	// ["San Diego" "Mountain View"]
+	// ["San Diego" "Mountain View" "Santa Monica" "Venice"]
 }
 ```
 
