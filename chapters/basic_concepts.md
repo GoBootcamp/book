@@ -991,7 +991,7 @@ For more details about slices:
 \label{sec:range}
 
 The `range` form of the for loop iterates over a `slice` (Section~\ref{sec:slices}) or a `map` (Section~\ref{sec:maps}).
-Being able to iterate over all the elements of of a data structure is
+Being able to iterate over all the elements of a data structure is
 very useful and `range` simplifies the iteration.
 
 ```go
