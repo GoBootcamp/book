@@ -10,7 +10,7 @@ in just a few pages.
 Here are the concepts we are going to explore before writing our
 first application. To walk through these various concepts, we are
 going to use Go's official [Tour of Go](http://tour.golang.org/) web
-application. 
+application.
 
 ## Packages and imports
 \label{sec:packages}
@@ -101,8 +101,8 @@ cannot refer to unexported name math.pi
 \label{sec:functions}
 
 A function can take zero or more typed arguments.
-The type comes after the variable name. 
-Functions can be defined to return any number of values. 
+The type comes after the variable name.
+Functions can be defined to return any number of values.
 Return values are always typed.
 
 
@@ -250,9 +250,88 @@ i := 42
 f := float64(i)
 u := uint(f)
 ```
-Go assignment between items of different type requires an explicit conversion. 
+Go assignment between items of different type requires an explicit conversion.
 
 * [Type conversion example](http://tour.golang.org/#15)
+
+## Type assertion
+\label{sec:type-assertion}
+
+If you have an object of type interface and want to convert it
+to a specific type, you can use type assertion.
+A type assertion takes an interface value and extracts from it a value of the specified explicit type.
+
+```go
+package main
+
+import (
+	"fmt"
+	"time"
+)
+
+func timeMap(y interface{}) {
+	z, ok := y.(map[string]interface{})
+	if ok {
+		z["updated_at"] = time.Now()
+	}
+}
+
+func main() {
+	foo := map[string]interface{}{
+		"Matt": 42,
+	}
+	timeMap(foo)
+	fmt.Println(foo)
+}
+```
+
+[See in playground](http://play.golang.org/p/jNrIZLQ4s8)
+
+The type assertion doesn't have to be done on an empty interface.
+It's often used when you have a function taking a param
+of a specific interface but the function inner code
+behaves differently based on the actual object type.
+Here is an example:
+
+
+```go
+package main
+
+import "fmt"
+
+type Stringer interface {
+	String() string
+}
+
+type fakeString struct {
+	content string
+}
+
+// function used to implement the Stringer interface
+func (s *fakeString) String() string {
+	return s.content
+}
+
+func printString(value interface{}) {
+	switch str := value.(type) {
+	case string:
+		fmt.Println(str)
+	case Stringer:
+		fmt.Println(str.String())
+	}
+}
+
+func main() {
+	s := &fakeString{"Ceci n'est pas un string"}
+	printString(s)
+	printString("Hello, Gophers")
+
+}
+```
+
+[See in Playground](http://play.golang.org/p/69I8PAuoAV)
+
+[Read more in the Effective Go guide](http://golang.org/doc/effective_go.html#interface_conversions)
 
 
 ## Constants
@@ -1131,7 +1210,7 @@ Chicago has 2714856 inhabitants
 [Assignment](http://tour.golang.org/#38) (can be done online)
 
 Implement `Pic`.
-It should return a slice of length dy, each element of which is a slice of dx 8-bit unsigned integers. 
+It should return a slice of length dy, each element of which is a slice of dx 8-bit unsigned integers.
 When you run the program, it will display your picture, interpreting the integers as grayscale (well, bluescale) values.
 
 The choice of image is up to you. Interesting functions include:
@@ -1383,7 +1462,7 @@ Similarly, when reading from a map if the key is not present the result is the z
 
 Implement WordCount.
 
-It should return a map of the counts of each "word" in the string `s`. 
+It should return a map of the counts of each "word" in the string `s`.
 The `wc.Test` function runs a test suite against the provided function and prints success or failure.
 
 You might find [strings.Fields](http://golang.org/pkg/strings/#Fields) helpful.
