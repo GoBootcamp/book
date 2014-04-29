@@ -57,12 +57,25 @@ authors:
         He's an active community member who contributed to many projects including the Go language. Matt is also a published author and who maintains his 
          [personal blog](http://matt.aimonetti.net) about tech and programming in general.
 
+faq:
+  -
+    question: "Is this book done?"
+    answer: "Not yet, I'm still working on it."
+  -
+    question: "Is this book free?"
+    answer: "Yes and will stay free even when done."
+
 testimonials:
   -
     name: "Evan Phoenix"
     title: "Code Chef / Mad Scientist"
     image: /images/evan.jpeg
     text: "I'm sure this book is great, but I didn't read it."
+  -
+    name: "Chad Fowler"
+    title: "Author, technologist, consultant, speaker, teacher, musician, organizer"
+    image: /images/chad.jpg
+    text: "I like Haskell better, but if you want to write Go, you probably should read this awesome (free) book"
 
 marketing_content: ''
 
