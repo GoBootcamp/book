@@ -26,7 +26,7 @@ func main() {
 }
 ```
 
-If you writing an executable code (versus a library), then you need
+If you are writing an executable code (versus a library), then you need
 to define a `main` package and a `main()` function which will be
 the entry point to your software.
 
@@ -1127,7 +1127,7 @@ func main() {
 ### Break & continue
 
 As if you were using a normal for loop, you can stop the iteration
-anytime by using `beak`:
+anytime by using `break`:
 
 ```go
 package main
