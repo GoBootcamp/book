@@ -43,7 +43,7 @@ func main() {
 }
 ```
 
-[See in playground](http://play.golang.org/p/ITVfJkCiwk])
+[See in playground](http://play.golang.org/p/ITVfJkCiwk)
 
 
 Note how methods are defined outside of the struct, if you have
@@ -79,7 +79,7 @@ var (
 )
 
 // Main type(s) for the file,
-// try to keep to keep the lowest amount of structs per file when possible.
+// try to keep the lowest amount of structs per file when possible.
 type User struct {
 	FirstName, LastName string
 	Location            *UserLocation
@@ -236,7 +236,7 @@ func main() {
 In the example above, `Abs()` could be defined on the value type or the
 pointer since the method doesn't modify the receiver value (the vertex).
 However `Scale()` has to be defined on a pointer since it does modify the receiver.
-`Scale()` resets the values of for the `X` and `Y` fields.
+`Scale()` resets the values of the `X` and `Y` fields.
 
 
 [Go tour page](http://tour.golang.org/#54)
