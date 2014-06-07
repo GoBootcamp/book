@@ -9,25 +9,8 @@ prices:
         Almost 9000 pages of content
         Includes a free copy of 1st Edition PDF
     media:
-      - html
-      - pdf
-      - epub
-      - mobi
+      - ebook
     price: 3500
-
-  -
-    code: screencasts
-    name: "HTML & Screencasts"
-    description:
-      |
-        Full updated for the 2nd edition
-        100% DRM-free digital downloads
-        (QuickTime and Ogg Vorbis)
-        Includes first edition screencasts
-    media:
-      - html
-      - screencasts
-    price: 12500
 
   -
     code: all
@@ -38,11 +21,7 @@ prices:
         eBook formats for Kindle, Nook, and PDF
         Read online.
     media:
-      - html
-      - pdf
-      - epub
-      - mobi
-      - screencasts
+      - ebook
     price: 12500
     regular_price: 19900
 
@@ -64,6 +43,15 @@ faq:
   -
     question: "Is this book free?"
     answer: "Yes and will stay free even when done."
+  -
+    question: "I found a typo or have suggestion, can I contribute?"
+    answer: "Absolutely, send a pull request to [the book repository](https://github.com/GoBootcamp/book)."
+  -
+    question: "Do I need to have Go installed?"
+    answer: "No, all code examples can be executed and modified from your browser as long have you internet."
+  -
+    question: "Some of the material seems familiar"
+    answer: "The book is largely based on the [Go tour](http://tour.golang.org/)"
 
 testimonials:
   -

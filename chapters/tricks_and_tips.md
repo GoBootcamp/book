@@ -38,7 +38,7 @@ great tools like [`go fmt`](http://blog.golang.org/go-fmt-your-code)
 and by having a strict compiler that won't compile unused variables or
 unused import statements.
 
-### Custom Constructors
+## Custom Constructors
 \label{sec:custom_constructors}
 
 
@@ -71,9 +71,101 @@ func main() {
 }
 ```
 
-### Breaking down code in packages
+## Breaking down code in packages
 
-TODO
+See this blog post on [refactoring Go code](http://matt.aimonetti.net/posts/2014/04/28/refactoring-go-code/), the first part talks about package organization.
+
+
+## Sets
+
+You might want to find a way to extract unique value from a collection.
+In other languages, you often have a set data structure now allowing
+duplicates. Go doesn't have that built in, however it's not too hard to
+implement (due to a lack of generics, you do need to do that for most
+types, which can be cumbersome).
+
+```go
+// UniqStr returns a copy if the passed slice with only unique string results.
+func UniqStr(col []string) []string {
+	m := map[string]struct{}{}
+	for _, v := range col {
+		if _, ok := m[v]; !ok {
+			m[v] = struct{}{}
+		}
+	}
+	list := make([]string, len(m))
+
+	i := 0
+	for v := range m {
+		list[i] = v
+		i++
+	}
+	return list
+}
+```
+
+[See in playground](http://play.golang.org/p/AtG9pTe8yt)
+
+I used a few interesting tricks that are interesting to know.
+First, the map of empty structs:
+
+```go
+  m := map[string]struct{}{}
+```
+
+We create a map with the keys being the values we want to be unique, the associated value doesn't really matter much so it could be anything. For instance:
+
+```go
+  m := map[string]bool{}
+```
+
+However I chose an empty structure because it will be as fast as a
+boolean but doesn't allocate as much memory.
+
+The second trick can been seen a bit further:
+
+```go
+if _, ok := m[v]; !ok {
+  m[v] = struct{}{}
+}
+```
+
+What we are doing here, is simply check if there is a value associated
+with the key `v` in the map `m`, we don't care about the value itself,
+but if we know that we don't have a value, then we add one.
+
+Once we have a map with unique keys, we can extract them into a new
+slice of strings and return the result.
+
+
+Here is the test for this function, as you can see, I used a table test,
+which is the idiomatic Go way to run unit tests:
+
+```go
+func TestUniqStr(t *testing.T) {
+
+	data := []struct{ in, out []string }{
+		{[]string{}, []string{}},
+		{[]string{"", "", ""}, []string{""}},
+		{[]string{"a", "a"}, []string{"a"}},
+		{[]string{"a", "b", "a"}, []string{"a", "b"}},
+		{[]string{"a", "b", "a", "b"}, []string{"a", "b"}},
+		{[]string{"a", "b", "b", "a", "b"}, []string{"a", "b"}},
+		{[]string{"a", "a", "b", "b", "a", "b"}, []string{"a", "b"}},
+		{[]string{"a", "b", "c", "a", "b", "c"}, []string{"a", "b", "c"}},
+	}
+
+	for _, exp := range data {
+		res := UniqStr(exp.in)
+		if !reflect.DeepEqual(res, exp.out) {
+			t.Fatalf("%q didn't match %q\n", res, exp.out)
+		}
+	}
+
+}
+```
+
+[See in the playground](http://play.golang.org/p/elRIpSKGjD)
 
 
 ## Dependency package management

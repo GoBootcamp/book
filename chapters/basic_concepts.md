@@ -47,6 +47,9 @@ import (
     "math/rand"
 )
 ```
+* [Go tour page](http://tour.golang.org/#4)
+* [Go tour page 2](http://tour.golang.org/#5)
+
 
 Usually, non standard lib packages are namespaced using a web
 url, for instance I ported to Go some Rails logic, including the cryptography code used in
@@ -59,21 +62,73 @@ statement:
 import "github.com/mattetti/goRailsYourself/crypto"
 ```
 
-We will see later on how to use the `go get` command to fetch the remote code before compiling our code.
+## Code location
+\label{sec:code_location}
 
-* [Go tour page](http://tour.golang.org/#4)
-* [Go tour page 2](http://tour.golang.org/#5)
+The snippet above basically tells the compiler to import the crypto
+package available at the `github.com/mattetti/goRailsYourself/crypto`
+path. It doesn't mean that the compiler will automatically pull down the
+repository, so where does it find the code?
+
+
+You need to pull down the code yourself. The easiest way is to use the
+`go get` command provided by Go.
+
+```bash
+$ go get github.com/mattetti/goRailsYourself/crypto
+```
+
+This command will pull down the code and put it in your Go path.
+When installing Go, we set the `GOPATH` environment variable and that is
+what's used to store binaries and libraries. That's also where you
+should store your code (your workspace).
+
+```bash
+$ ls $GOPATH
+bin	pkg	src
+```
+
+The `bin` folder will contain the Go compiled binaries, you
+probably added the bin path to your system path.
+
+The `pkg` folder contains the compiled versions of the available libraries
+so the compiler can link against them without recompiling them.
+
+Finally the `src` folder contains all the Go source code organized by
+import path:
+
+```bash
+$ ls $GOPATH/src
+bitbucket.org	code.google.com	github.com	launchpad.net
+```
+
+```bash
+$ ls $GOPATH/src/github.com/mattetti
+goblin			goRailsYourself		jet
+```
+
+When starting a new program or library, it is recommended to do so
+inside the `src` folder, using a fully qualified path (for instance:
+`github.com/<your username>/<project name>`)
+
 
 ## Exported names
 \label{sec:exported_names}
 
-After importing a package, you can refer to the names it exports.
+After importing a package, you can refer to the names it exports
+(meaning variables, methods and functions that are available from
+outside of the package).
 In Go, a name is exported if it begins with a capital letter.
 `Foo` is an exported name, as is `FOO`. The name `foo` is not exported.
 
 See the difference between:
 
 ```go
+import (
+    "fmt"
+    "math"
+)
+
 func main() {
     fmt.Println(math.pi)
 }
@@ -96,6 +151,12 @@ cannot refer to unexported name math.pi
 ```
 
 * [Exported names example](http://tour.golang.org/#6)
+
+Use the provided Go (documentation](http://golang.org/pkg/) or
+[godoc.org](http://godoc.org/) to find exported names.
+
+* [Exported names example](http://play.golang.org/p/5y_evW6jiS)
+
 
 ## Functions, signature, return values, named results
 \label{sec:functions}
@@ -143,51 +204,61 @@ func main() {
 
 * [Function with arguments sharing the same type](http://tour.golang.org/#8)
 
-In this example, the `swap` function return two string values.
+In this example, the `location` function returns two string values.
 
 ```go
-package main
+func location(city string) (string, string) {
+	var region string
+	var country string
 
-import "fmt"
-
-func swap(x, y string) (string, string) {
-    return y, x
+	switch city {
+	case "Los Angeles", "LA", "Santa Monica":
+		region, country = "California", "North America"
+	case "New York", "NYC":
+		region, country = "New York", "North America"
+	default:
+		region, country = "Unknown", "Unknown"
+	}
+	return region, country
 }
 
 func main() {
-    a, b := swap("hello", "world")
-    fmt.Println(a, b)
+	region, country := location("Santa Monica")
+	fmt.Printf("Matt lives in %s, %s", region, country)
 }
 ```
 
 
-* [Function with multiple results](http://tour.golang.org/#9)
+* [See in playground](http://play.golang.org/p/8iduSCRNiO)
 
 Functions take parameters. In Go, functions can return multiple "result parameters", not just a single value. They can be named and act just like variables.
 
 If the result parameters are named, a return statement without arguments returns the current values of the results.
 
+
 ```go
-package main
-
-import "fmt"
-
-func split(sum int) (x, y int) {
-    x = sum * 4 / 9
-    y = sum - x
-    return
+func location(name, city string) (name, country string) {
+	switch city {
+	case "New York", "LA", "Chicago":
+		country = "North America"
+	default:
+		country = "Unknown"
+	}
+	return city, country
 }
 
 func main() {
-    fmt.Println(split(17))
+	name, country := location("Matt", "LA")
+	fmt.Printf("%s lives in %s", name, country)
 }
 ```
+
+* [See in playground](http://play.golang.org/p/aOSABxXoiU)
 
 I personally recommend against using named return parameters because
 they often cause more confusion than they save time or help clarify your
 code.
 
-* [Function with named results](http://tour.golang.org/#10)
 
 ### Resources
 

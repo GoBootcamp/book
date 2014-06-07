@@ -19,7 +19,7 @@ Foundry](http://www.cloudfoundry.com/)
 Git hosting was provided by [GitHub](https://github.com)
 
 This companion book contains material initially written specifically
-for this event as well as content from Google under [Creative Commons Attribution
+for this event as well as content from Google & the [Go team](http://tour.golang.org/) under [Creative Commons Attribution
 3.0 License](http://creativecommons.org/licenses/by/3.0/) and code under licensed under a BSD license.
 The rest of of the content is also provided under [Creative Commons Attribution
 3.0 License](http://creativecommons.org/licenses/by/3.0/).
@@ -37,14 +37,16 @@ consider [joining the Go Bootcamp Mailing List](http://groups.google.com/d/forum
 
 ## Schedule of the day
 
-* Tour of Go
+The content is better studied over two days, but if you only have a
+day, here is a suggested schedule.
+
 * Basic concepts (Chapter~\ref{cha:basic_concepts})
 * Methods and Interfaces (Chapter~\ref{cha:methods_and_interfaces})
-* Concurrency (Chapter~\ref{cha:concurrency})
-* Get setup (Chapter~\ref{cha:get_setup})
 
 _Lunch break_
 
+* Get setup (Chapter~\ref{cha:get_setup})
+* Concurrency (Chapter~\ref{cha:concurrency})
 * Get your feet wet (Chapter~\ref{cha:get_your_feet_wet})
   (CLI rescue exercise)
 * Refactoring group exercise (CLI refacoring exercise done publicly)
