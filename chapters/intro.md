@@ -35,24 +35,6 @@ If you have any questions or want to know about future events, please
 consider [joining the Go Bootcamp Mailing List](http://groups.google.com/d/forum/golang-bootcamp)
 
 
-## Schedule of the day
-
-The content is better studied over two days, but if you only have a
-day, here is a suggested schedule.
-
-* Basic concepts (Chapter~\ref{cha:basic_concepts})
-* Methods and Interfaces (Chapter~\ref{cha:methods_and_interfaces})
-
-_Lunch break_
-
-* Get setup (Chapter~\ref{cha:get_setup})
-* Concurrency (Chapter~\ref{cha:concurrency})
-* Get your feet wet (Chapter~\ref{cha:get_your_feet_wet})
-  (CLI rescue exercise)
-* Refactoring group exercise (CLI refacoring exercise done publicly)
-* Tips & Tricks
-* Group exercises around various topics
-
 ## Objectives
 
 After the event, we expect that the attendees to leave with the

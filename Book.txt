@@ -5,7 +5,10 @@ tableofcontents
 preface.md
 mainmatter:
 intro.md
-basic_concepts.md
+basics.md
+control_flow.md
+types.md
+collection_types.md
 methods_and_interfaces.md
 concurrency.md
 get_setup.md
