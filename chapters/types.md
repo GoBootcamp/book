@@ -384,16 +384,16 @@ type Player struct {
 }
 
 func main() {
-	p1 := Player{}
-	p1.Id = 42
-	p1.Name = "Matt"
-	p1.Location = "LA"
-	p1.GameId = 90404
-	fmt.Printf("%+v", p1)
+	p := Player{}
+	p.Id = 42
+	p.Name = "Matt"
+	p.Location = "LA"
+	p.GameId = 90404
+	fmt.Printf("%+v", p)
 }
 ```
 
-[See in Playground](http://play.golang.org/p/Jwc5pCT4R_)
+[See in Playground](http://play.golang.org/p/kR-Cue8816)
 
 The other option is to use a struct literal:
 
