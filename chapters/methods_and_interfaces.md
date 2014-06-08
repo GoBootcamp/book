@@ -163,6 +163,7 @@ func main() {
 
 
 ### Method receivers
+\label{sec:method_receivers}
 
 Methods can be associated with a named type (`User` for instance) or a pointer to a named type (`*User`).
 In the two type aliasing examples above, methods were defined on the

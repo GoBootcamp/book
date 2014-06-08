@@ -411,9 +411,9 @@ code.
 \label{sec:pointers}
 
 Go has pointers, but no pointer arithmetic.
-Struct fields can be accessed through a struct pointer. The indirection through the pointer is transparent.
+Struct fields can be accessed through a struct pointer. The indirection through the pointer is transparent (you can directly call fields and methods on a pointer).
 
-Note that by default Go passes arguments by values (copying the
+Note that by default Go passes arguments by value (copying the
 arguments), if you want to pass the arguments by reference, you need
 to pass pointers (or use a structure using reference values like
 slices (Section~\ref{sec:slices}) and maps (Section~\ref{sec:maps}).
@@ -433,3 +433,74 @@ resp, err := client.Get("http://gobootcamp.com")
 
 * [Pointers example](http://tour.golang.org/#28)
 
+## Mutability
+\label{sec:mutability}
+
+In Go, only constants are immutable. However because arguments are
+passed by value, a function receiving an value argument and mutating it, won't
+mutate the original value.
+
+```go
+package main
+
+import "fmt"
+
+type Artist struct {
+	Name, Genre string
+	Songs       int
+}
+
+func newRelease(a Artist) int {
+	a.Songs++
+	return a.Songs
+}
+
+func main() {
+	me := Artist{Name: "Matt", Genre: "Electro", Songs: 42}
+	fmt.Printf("%s released their %dth song\n", me.Name, newRelease(me))
+	fmt.Printf("%s has a total of %d songs", me.Name, me.Songs)
+}
+```
+
+```
+Matt released their 43th song
+Matt has a total of 42 songs
+```
+
+[See in Playground](http://play.golang.org/p/_hcMO1tI8C)
+
+As you can see the total amount of songs on the `me` variable's value
+wasn't changed.
+To mutate the passed value, we need to pass it by reference, using a
+pointer.
+
+```go
+package main
+
+import "fmt"
+
+type Artist struct {
+	Name, Genre string
+	Songs       int
+}
+
+func newRelease(a *Artist) int {
+	a.Songs++
+	return a.Songs
+}
+
+func main() {
+	me := &Artist{Name: "Matt", Genre: "Electro", Songs: 42}
+	fmt.Printf("%s released their %dth song\n", me.Name, newRelease(me))
+	fmt.Printf("%s has a total of %d songs", me.Name, me.Songs)
+}
+```
+
+[See in Playground](http://play.golang.org/p/FaWFYCZmfh)
+
+The only change between the two versions is that `newRelease` takes a
+pointer to an `Artist` value and when I intialize our `me` variable, I
+used the `&` symbol to get a pointer to the value.
+
+Another place where you need to be careful is when calling methods on
+values as explained a bit later (Section~\ref{sec:method_receivers})
