@@ -314,7 +314,7 @@ Instead you have to think in terms of composition and interfaces.
 
 The Go team wrote a [short but good segment](http://golang.org/doc/effective_go.html#embedding) on this topic.
 
-Composition of something known by OOP programmers and Go supports it,
+Composition (or embedding) is a well understood concept for most OOP programmers and Go supports it,
 here is an example of the problem it's addressing:
 
 ```go
@@ -533,6 +533,8 @@ func main() {
 }
 ```
 
+[See in Playground](http://play.golang.org/p/mq3r9H9szz)
+
 Note that you still need to set the logger and that's often a good
 reason to use a constructor (custom constructor are used when you need
 to set a structure before using a value, see (Section~\ref{sec:custom_constructors}) ).
@@ -547,8 +549,15 @@ the interface without you writing any custom methods.
 ### Exercise
 
 Looking at the `User` / `Player` example, you might have noticed that we
-composed `Player` using `User` but it would be better to compose it with
-a pointer to a `User` struct. Modify the code to use a pointer but still
+composed `Player` using `User` but it might be better to compose it with
+a pointer to a `User` struct. 
+The reason why a pointer might be better is because in Go, parameters are
+passed by value and not reference. If you have a small struct that is
+inexpensive to copy, that is fine, but more than likely, in real life,
+our `User` struct will be bigger and should not be copied. Instead we
+would want to pass by reference (using a pointer).
+
+Modify the code to use a pointer but still
 be able to initialize without using the dot notation.
 
 **Question:** We defined the `Greetings` method on a pointer to a `User`
