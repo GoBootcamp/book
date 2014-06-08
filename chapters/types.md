@@ -563,11 +563,14 @@ the interface without you writing any custom methods.
 Looking at the `User` / `Player` example, you might have noticed that we
 composed `Player` using `User` but it might be better to compose it with
 a pointer to a `User` struct. 
-The reason why a pointer might be better is because in Go, parameters are
+The reason why a pointer might be better is because in Go, arguments are
 passed by value and not reference. If you have a small struct that is
 inexpensive to copy, that is fine, but more than likely, in real life,
 our `User` struct will be bigger and should not be copied. Instead we
-would want to pass by reference (using a pointer).
+would want to pass by reference (using a pointer). 
+(Section~\ref{sec:mutability} & Section~\ref{sec:method_receivers} discuss more in depth how calling
+a method on a type value vs a pointer affects mutability and memory
+allocation)
 
 Modify the code to use a pointer but still
 be able to initialize without using the dot notation.
