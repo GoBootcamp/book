@@ -106,6 +106,7 @@ Syntax](http://blog.golang.org/gos-declaration-syntax)
 \label{sec:constants}
 
 Constants are declared like variables, but with the `const` keyword.
+They can be declared 
 
 Constants can only be character, string, boolean, or numeric values
 and cannot be declared using the `:=` syntax.
@@ -124,8 +125,27 @@ const (
 )
 ```
 
-* [Constants example](http://tour.golang.org/#16)
-* [Numeric Constants](http://tour.golang.org/#17)
+```go
+package main
+
+import "fmt"
+
+const (
+	Pi    = 3.14
+	Truth = false
+	Big   = 1 << 100
+	Small = Big >> 99
+)
+
+func main() {
+	const Greeting = "ハローワールド"
+	fmt.Println(Greeting)
+	fmt.Println(Pi)
+	fmt.Println(Truth)
+}
+```
+
+[See in Playground](http://play.golang.org/p/fPlqsffS-J)
 
 
 ## Printing Constants and Variables
