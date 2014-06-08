@@ -470,7 +470,7 @@ func main() {
 As you can see this is a very powerful way to build data structures but
 it's even more interesting when thinking about it in the context of
 interfaces. By composing one of your structure with one implementing a
-given interface, your structure automatically implements the structre.
+given interface, your structure automatically implements the interface.
 
 Here is another example, this time we will look at implementing a `Job`
 struct that can also behave as a [logger](http://golang.org/pkg/log/#Logger).
