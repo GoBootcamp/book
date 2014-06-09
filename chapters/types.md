@@ -6,14 +6,14 @@
 
 ```
 bool
-
 string
 
-// Numeric types
+Numeric types:
 
 uint        either 32 or 64 bits
 int         same size as uint
-uintptr     an unsigned integer large enough to store the uninterpreted bits of a pointer value
+uintptr     an unsigned integer large enough to store the uninterpreted bits of 
+            a pointer value
 uint8       the set of all unsigned  8-bit integers (0 to 255)
 uint16      the set of all unsigned 16-bit integers (0 to 65535)
 uint32      the set of all unsigned 32-bit integers (0 to 4294967295)
@@ -22,7 +22,8 @@ uint64      the set of all unsigned 64-bit integers (0 to 18446744073709551615)
 int8        the set of all signed  8-bit integers (-128 to 127)
 int16       the set of all signed 16-bit integers (-32768 to 32767)
 int32       the set of all signed 32-bit integers (-2147483648 to 2147483647)
-int64       the set of all signed 64-bit integers (-9223372036854775808 to 9223372036854775807)
+int64       the set of all signed 64-bit integers 
+            (-9223372036854775808 to 9223372036854775807)
 
 float32     the set of all IEEE-754 32-bit floating-point numbers
 float64     the set of all IEEE-754 64-bit floating-point numbers
@@ -162,9 +163,8 @@ func main() {
 }
 ```
 
-[See in Playground](http://play.golang.org/p/69I8PAuoAV)
-
-[Read more in the Effective Go guide](http://golang.org/doc/effective_go.html#interface_conversions)
+* [See in Playground](http://play.golang.org/p/69I8PAuoAV)
+* [Read more in the Effective Go guide](http://golang.org/doc/effective_go.html#interface_conversions)
 
 ## Structs
 \label{sec:structs}
@@ -210,7 +210,7 @@ func main() {
 }
 ```
 
-[See in Playground](http://play.golang.org/p/qQceF9kimQ)
+* [See in Playground](http://play.golang.org/p/qQceF9kimQ)
 
 Declaration of struct literals:
 
@@ -235,7 +235,7 @@ func main() {
 }
 ```
 
-[See in playground](http://play.golang.org/p/DOlEpcRSBQ)
+* [See in playground](http://play.golang.org/p/DOlEpcRSBQ)
 
 Accessing fields using the dot notation:
 
@@ -264,7 +264,7 @@ func main() {
 }
 ```
 
-[See in Playground](http://play.golang.org/p/QKwafh0TkQ)
+* [See in Playground](http://play.golang.org/p/QKwafh0TkQ)
 
 
 ## Initializing
@@ -304,7 +304,7 @@ func main() {
 }
 ```
 
-[See in playground](http://play.golang.org/p/XgECtFpCw6)
+* [See in playground](http://play.golang.org/p/XgECtFpCw6)
 
 
 Note that slices (Section~\ref{sec:slices}), maps (Section~\ref{sec:maps}) and channels (Section~\ref{sec:channels}) are usually allocated using `make`
@@ -356,7 +356,7 @@ func main() {
 }
 ```
 
-[See in Playground](http://play.golang.org/p/kR-Cue8816)
+* [See in Playground](http://play.golang.org/p/kR-Cue8816)
 
 
 The above example demonstrates a classic OOP challenge,
@@ -405,7 +405,7 @@ func main() {
 }
 ```
 
-[See in Playground](http://play.golang.org/p/kR-Cue8816)
+* [See in Playground](http://play.golang.org/p/kR-Cue8816)
 
 The other option is to use a struct literal:
 
@@ -438,7 +438,7 @@ func main() {
 }
 ```
 
-[See in Playground](http://play.golang.org/p/wscd8inj9t)
+* [See in Playground](http://play.golang.org/p/wscd8inj9t)
 
 When using a struct litteral with an implicit composition, we can't just pass the composed fields. 
 We instead need to pass the types composing the struct.
@@ -477,7 +477,7 @@ func main() {
 }
 ```
 
-[See in Playground](http://play.golang.org/p/q_KFeTLwVX)
+* [See in Playground](http://play.golang.org/p/q_KFeTLwVX)
 
 As you can see this is a very powerful way to build data structures but
 it's even more interesting when thinking about it in the context of
@@ -511,7 +511,7 @@ func main() {
 }
 ```
 
-[See in playground](http://play.golang.org/p/3yYJadlmHS)
+* [See in playground](http://play.golang.org/p/3yYJadlmHS)
 
 
 Our `Job` struct has a field called `Logger` which is a pointer to
@@ -545,7 +545,7 @@ func main() {
 }
 ```
 
-[See in Playground](http://play.golang.org/p/mq3r9H9szz)
+* [See in Playground](http://play.golang.org/p/mq3r9H9szz)
 
 Note that you still need to set the logger and that's often a good
 reason to use a constructor (custom constructor are used when you need
@@ -558,7 +558,7 @@ struct (and initializing it properly), your struct is now implementing
 the interface without you writing any custom methods.
 
 
-### Exercise
+## Exercise
 
 Looking at the `User` / `Player` example, you might have noticed that we
 composed `Player` using `User` but it might be better to compose it with

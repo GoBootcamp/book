@@ -451,7 +451,6 @@ client := &http.Client{}
 resp, err := client.Get("http://gobootcamp.com")
 ```
 
-* [Pointers example](http://tour.golang.org/#28)
 
 ## Mutability
 \label{sec:mutability}

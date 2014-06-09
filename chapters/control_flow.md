@@ -80,93 +80,105 @@ for {
 ## Exercise: Loops and Functions
 \label{sec:exercise_loops_and_funcs}
 
-[Assignment](http://tour.golang.org/#25)
+You have 50 bitcoins to distribute to 10 users:
+Matthew, Sarah, Augustus, Heidi, Emilie,
+Peter, Giana, Adriano, Aaron, Elizabeth
+The coins will be distributed based on the vowels contained in each name where:
 
-As a simple way to play with functions and loops, implement the square root function using Newton's method.
+a: 1 coin
+e: 1 coin
+i: 2 coins
+o: 3 coins
+u: 4 coins
 
-In this case, Newton's method is to approximate `Sqrt(x`) by picking a starting point `z` and then repeating:
+and a user can't get more than 10 coins.
+Print a map with each user's name and the amount of coins
+distributed. After distributing all the coins, you should have 2 coins
+left.
 
-\( z = z - \frac{z2 - x}{2z} \)
 
-To begin with, just repeat that calculation 10 times and see how close you get to the answer for various values (1, 2, 3, ...).
+The output should look something like that:
 
-Next, change the loop condition to stop once the value has stopped changing (or only changes by a very small delta). See if that's more or fewer iterations. How close are you to the math.Sqrt?
-
-Hint: to declare and initialize a floating point value, give it floating point syntax or use a conversion:
-
-```go
-z := float64(1)
-z := 1.0
+```
+map[Matthew:2 Peter:2 Giana:4 Adriano:7 Elizabeth:5 Sarah:2 Augustus:10 Heidi:5 Emilie:6 Aaron:5]
+Coins left: 2
 ```
 
-Work on the exercises and check the provided solution below.
+Note that Go doesn't keep the order of the keys in a map, so your
+results might not look exactly the same but the key/value mapping should
+be the same.
 
-**Solutions**:
-
-Repeat that calculation 10 times and see how close you get to the answer for various values:
-
-```go
-package main
-
-import (
-	"fmt"
-	"math"
-)
-
-func Sqrt(x float64) float64 {
-	// nested function to generate an approximation
-	approximation := func(z, x float64) float64 {
-		return z - ((z*z)-x)/(2*z)
-	}
-
-	z := 1.0
-	for i := 0; i < 10; i++ {
-		z = approximation(z, x)
-	}
-	return z
-}
-
-func main() {
-	for i := 1.0; i < 11.0; i++ {
-		fmt.Printf("%d: %f vs %f\n", int(i), Sqrt(i), math.Sqrt(i))
-	}
-}
-```
-[See in playground](http://play.golang.org/p/me3tBkzd5S)
-
-Stop once the value has stopped changing (or only changes by a very small delta). See if that's more or fewer iterations.
-
+Here is some starting code:
 
 ```go
 package main
 
-import (
-	"fmt"
-	"math"
+import "fmt"
+
+var (
+	coins = 50
+	users = []string{
+		"Matthew", "Sarah", "Augustus", "Heidi", "Emilie",
+		"Peter", "Giana", "Adriano", "Aaron", "Elizabeth",
+	}
+	distribution = make(map[string]int, len(users))
 )
 
-func Sqrt(x float64) (float64, int) {
-	approximation := func(z, x float64) float64 {
-		return z - ((z*z)-x)/(2*z)
-	}
-	i := 0
-	z := approximation(1.0, x)
-	for math.Abs(approximation(z, x)-z) > 0.0000001 {
-		z = approximation(z, x)
-		i++
-	}
-	return z, i
-}
-
 func main() {
-	for i := 1.0; i < 11.0; i++ {
-		ours, iterations := Sqrt(i)
-		fmt.Printf("%d: in %d iterations %f vs %f\n",
-			int(i),
-			iterations, ours,
-			math.Sqrt(i))
-	}
+	fmt.Println(distribution)
+	fmt.Println("Coins left:", coins)
 }
 ```
-[See in playground](http://play.golang.org/p/VBvPwQmDLI)
 
+[See in Playground](http://play.golang.org/p/jaKZWoCHbD)
+
+### Solution
+
+```go
+package main
+
+import "fmt"
+
+var (
+	coins = 50
+	users = []string{
+		"Matthew", "Sarah", "Augustus", "Heidi", "Emilie",
+		"Peter", "Giana", "Adriano", "Aaron", "Elizabeth",
+	}
+	distribution = make(map[string]int, len(users))
+)
+
+func main() {
+	coinsForUser := func(name string) int {
+		var total int
+		for i := 0; i < len(name); i++ {
+			switch string(name[i]) {
+			case "a", "A":
+				total++
+			case "e", "E":
+				total++
+			case "i", "I":
+				total = total + 2
+			case "o", "O":
+				total = total + 3
+			case "u", "U":
+				total = total + 4
+			}
+		}
+		return total
+	}
+
+	for _, name := range users {
+		v := coinsForUser(name)
+		if v > 10 {
+			v = 10
+		}
+		distribution[name] = v
+		coins = coins - v
+	}
+	fmt.Println(distribution)
+	fmt.Println("Coins left:", coins)
+}
+```
+
+[See in Playground](http://play.golang.org/p/D0HfGeICyj)

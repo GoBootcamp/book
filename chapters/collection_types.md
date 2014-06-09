@@ -48,7 +48,7 @@ func main() {
 }
 ```
 
-[See in playground](http://play.golang.org/p/87fdeul4H7)
+* [See in Playground](http://play.golang.org/p/87fdeul4H7)
 
 Finally, you can use an ellipsis to use an implicit length when you
 pass the values:
@@ -64,7 +64,7 @@ func main() {
 }
 ```
 
-[See in playground](http://play.golang.org/p/lxVUhtyJJP)
+* [See in Playground](http://play.golang.org/p/lxVUhtyJJP)
 
 ### Printing arrays
 
@@ -88,7 +88,7 @@ func main() {
 }
 ```
 
-[See in playground](http://play.golang.org/p/jsvGaXW6uH)
+* [See in Playground](http://play.golang.org/p/jsvGaXW6uH)
 
 
 ### Multi-dimensional arrays
@@ -114,7 +114,7 @@ func main() {
 }
 ```
 
-[See in playground](http://play.golang.org/p/L6faG4RMPx)
+* [See in Playground](http://play.golang.org/p/L6faG4RMPx)
 
 
 Trying to access or set a value at an index that doesn't exist will
@@ -171,7 +171,7 @@ func main() {
 }
 ```
 
-[Go tour page](http://tour.golang.org/#33)
+* [Go tour page](http://tour.golang.org/#33)
 
 ### Slicing a slice
 
@@ -222,9 +222,9 @@ func main() {
 }
 ```
 
-[See in playground](http://play.golang.org/p/2z_6hNt_Vg)
+* [See in Playground](http://play.golang.org/p/2z_6hNt_Vg)
 
-[Go tour page](http://tour.golang.org/#33)
+* [Go tour page](http://tour.golang.org/#33)
 
 
 ### Making slices
@@ -248,11 +248,11 @@ func main() {
 }
 ```
 
-[See in playground](http://play.golang.org/p/CX5z79KYsK)
+* [See in Playground](http://play.golang.org/p/CX5z79KYsK)
 
 It works by allocating a zeroed array and returning a slice that refers to that array.
 
-[Go tour](http://tour.golang.org/#34)
+* [Go tour](http://tour.golang.org/#34)
 
 
 ### Appending to a slice
@@ -282,7 +282,7 @@ func main() {
 }
 ```
 
-[Go playground](http://play.golang.org/p/rNRt6jvlFl)
+* [See in Playground](http://play.golang.org/p/rNRt6jvlFl)
 
 
 You can append more than one entry to a slice:
@@ -300,7 +300,7 @@ func main() {
 }
 ```
 
-[See in playground](http://play.golang.org/p/fdh3daTttz)
+* [See in Playground](http://play.golang.org/p/fdh3daTttz)
 
 And you can also append a slice to another using an ellipsis:
 
@@ -318,7 +318,7 @@ func main() {
 }
 ```
 
-[See in playground](http://play.golang.org/p/CjR88q7CIo)
+* [See in Playground](http://play.golang.org/p/CjR88q7CIo)
 
 Note that the ellipsis is a built-in feature of the language that means
 that the element is a collection.
@@ -356,7 +356,7 @@ func main() {
 }
 ```
 
-[See in playground](http://play.golang.org/p/EvvVrOpPII)
+* [See in Playground](http://play.golang.org/p/EvvVrOpPII)
 
 
 ### Nil slices
@@ -379,9 +379,8 @@ func main() {
     // nil!
 }
 ```
-[See in playground](http://play.golang.org/p/inw1CunExE)
-
-[Go tour page](http://tour.golang.org/#35)
+* [See in Playground](http://play.golang.org/p/inw1CunExE)
+* [Go tour page](http://tour.golang.org/#35)
 
 ### Resources
 
@@ -430,7 +429,7 @@ Which will print:
 2**7 = 128
 ```
 
-[Go tour page](http://tour.golang.org/#36)
+* [Go tour page](http://tour.golang.org/#36)
 
 
 You can skip the index or value by assigning to `_`.
@@ -452,7 +451,7 @@ func main() {
 }
 ```
 
-[Go tour page](http://tour.golang.org/#37)
+* [Go tour page](http://tour.golang.org/#37)
 
 ### Break & continue
 
@@ -477,7 +476,7 @@ func main() {
 }
 ```
 
-[See in playground](http://play.golang.org/p/T65dcE8fZ7)
+* [See in Playground](http://play.golang.org/p/T65dcE8fZ7)
 
 
 You can also skip an iteration by using `continue`:
@@ -500,7 +499,7 @@ func main() {
 }
 ```
 
-[See in playground](http://play.golang.org/p/TT1vfYKpOy)
+* [See in Playground](http://play.golang.org/p/TT1vfYKpOy)
 
 
 ### Range and maps
@@ -533,130 +532,79 @@ Los Angeles has 3857799 inhabitants
 Chicago has 2714856 inhabitants
 ```
 
-[See in playground](http://play.golang.org/p/rg5sc_Nl-P)
+* [See in Playground](http://play.golang.org/p/rg5sc_Nl-P)
 
-## Exercise: Slice
+### Exercise
 
-[Assignment](http://tour.golang.org/#38) (can be done online)
-
-Implement `Pic`.
-It should return a slice of length dy, each element of which is a slice of dx 8-bit unsigned integers.
-When you run the program, it will display your picture, interpreting the integers as grayscale (well, bluescale) values.
-
-The choice of image is up to you. Interesting functions include:
-
-```
-x ^ y
-```
-
-```
-(x+y)/2
-```
-
-and
-
-```
-x*y
-```
-
-bonus function:
-
-```
-x^y+(x+y)/2
-```
-
-(You need to use a loop to allocate each `[]uint8` inside the `[][]uint8`.)
-(Use `uint8(intValue)` to convert between types.)
-
-Starting code base:
+Given a list of names, you need to organize each name
+within a slice based on its length.
 
 ```go
 package main
 
-import "code.google.com/p/go-tour/pic"
-
-func Pic(dx, dy int) [][]uint8 {
-}
+var names = []string{"Katrina", "Evan", "Neil", "Adam", "Martin", "Matt",
+	"Emma", "Isabella", "Emily", "Madison",
+	"Ava", "Olivia", "Sophia", "Abigail",
+	"Elizabeth", "Chloe", "Samantha",
+	"Addison", "Natalie", "Mia", "Alexis"}
 
 func main() {
-    pic.Show(Pic)
+	// insert your code here
 }
 ```
 
-Start by pulling down the `pic` package:
+* [See in Playground](http://play.golang.org/p/o1YicfGXCx)
 
-```bash
-$ go get code.google.com/p/go-tour/pic
-```
-
-Here is a preview of the package code:
+After you implement your solution, you should get the following output
+(slice of slice of strings):
 
 ```go
-package pic
-
-import (
-	"bytes"
-	"encoding/base64"
-	"fmt"
-	"image"
-	"image/png"
-)
-
-func Show(f func(int, int) [][]uint8) {
-	const (
-		dx = 256
-		dy = 256
-	)
-	data := f(dx, dy)
-	m := image.NewNRGBA(image.Rect(0, 0, dx, dy))
-	for y := 0; y < dy; y++ {
-		for x := 0; x < dx; x++ {
-			v := data[y][x]
-			i := y*m.Stride + x*4
-			m.Pix[i] = v
-			m.Pix[i+1] = v
-			m.Pix[i+2] = 255
-			m.Pix[i+3] = 255
-		}
-	}
-	ShowImage(m)
-}
-
-func ShowImage(m image.Image) {
-	var buf bytes.Buffer
-	err := png.Encode(&buf, m)
-	if err != nil {
-		panic(err)
-	}
-	enc := base64.StdEncoding.EncodeToString(buf.Bytes())
-	fmt.Println("IMAGE:" + enc)
-}
+[[] [] [Ava Mia] [Evan Neil Adam Matt Emma] [Emily Chloe] 
+[Martin Olivia Sophia Alexis] [Katrina Madison Abigail Addison Natalie] 
+[Isabella Samantha] [Elizabeth]]
 ```
+
 
 ### Solution
 
 ```go
 package main
 
-import "code.google.com/p/go-tour/pic"
+import "fmt"
 
-func Pic(dx, dy int) [][]uint8 {
-	img := make([][]uint8, dy)
-	for y := range img {
-		img[y] = make([]uint8, dx)
-		for x := 0; x < dx; x++ {
-			img[y][x] = uint8(x * y)
-		}
-	}
-	return img
-}
+var names = []string{"Katrina", "Evan", "Neil", "Adam", "Martin", "Matt",
+	"Emma", "Isabella", "Emily", "Madison",
+	"Ava", "Olivia", "Sophia", "Abigail",
+	"Elizabeth", "Chloe", "Samantha",
+	"Addison", "Natalie", "Mia", "Alexis"}
 
 func main() {
-	pic.Show(Pic)
+	var maxLen int
+	for _, name := range names {
+		if l := len(name); l > maxLen {
+			maxLen = l
+		}
+	}
+	output := make([][]string, maxLen)
+	for _, name := range names {
+		output[len(name)-1] = append(output[len(name)-1], name)
+	}
+
+	fmt.Printf("%v", output)
 }
 ```
 
-[See in playground](http://play.golang.org/p/iTzF6Y972V)
+* [See in Playground](http://play.golang.org/p/gMOouTnYvC)
+
+There are a few interesting things to note.
+To avoid an out of bounds insert, we need our
+`output` slice to be big enough. But we don't want it to 
+be too big. That's why we need to do a first pass through all the names
+and find the longest. 
+We use the longest name length to set the length of the `output` slice
+length.
+Slices are zero indexed, so when inserting the names, we need to get the 
+length of the name minus one.
 
 
 ## Maps
@@ -684,7 +632,12 @@ func main() {
 }
 ```
 
-[See in playground](http://play.golang.org/p/ttJ-3xgzuk)
+```
+map[string]int{"Nicolas Cage":50, "Selena Gomez":21, "Jude Law":41,
+    "Scarlett Johansson":29}
+```
+
+* [See in Playground](http://play.golang.org/p/ttJ-3xgzuk)
 
 
 When not using map literals like above, maps must be created with make (not new) before use.
@@ -711,7 +664,7 @@ func main() {
 }
 ```
 
-[See in playground](http://play.golang.org/p/NW1ODtLARA)
+* [See in Playground](http://play.golang.org/p/NW1ODtLARA)
 
 When using map literals, if the top-level type is just a type name, you can omit it from the elements of the literal.
 
@@ -736,13 +689,7 @@ func main() {
 }
 ```
 
-[See in playground](http://play.golang.org/p/nvGq-9gQ5z)
-
-
-[Go tour page](http://tour.golang.org/#39)
-[Go tour page 2](http://tour.golang.org/#40)
-[Go tour page 3](http://tour.golang.org/#41)
-
+* [See in Playground](http://play.golang.org/p/nvGq-9gQ5z)
 
 ### Mutating maps
 
@@ -770,15 +717,12 @@ Test that a key is present with a two-value assignment:
 elem, ok = m[key]
 ```
 
-[See in playground](http://play.golang.org/p/pvfk9maSsh)
+* [See in Playground](http://play.golang.org/p/pvfk9maSsh)
 
 
-If key is in m, ok is true. If not, ok is false and elem is the zero value for the map's element type.
+If key is in `m`, `ok` is true. If not, `ok` is false and elem is the zero value for the map's element type.
 Similarly, when reading from a map if the key is not present the result is the zero value for the map's element type.
 
-
-
-[Go tour page](http://tour.golang.org/#42)
 
 
 ### Resources
@@ -788,9 +732,28 @@ Similarly, when reading from a map if the key is not present the result is the z
 
 ## Exercise: Map
 
-[Online assignment](http://tour.golang.org/#43)
 
 Implement WordCount.
+
+```go
+package main
+
+import (
+    "code.google.com/p/go-tour/wc"
+)
+
+func WordCount(s string) map[string]int {
+    return map[string]int{"x": 1}
+}
+
+func main() {
+    wc.Test(WordCount)
+}
+```
+
+* [See in Playground](http://play.golang.org/p/-7aN1ASYYx)
+* [Online assignment](http://tour.golang.org/#43)
+
 
 It should return a map of the counts of each "word" in the string `s`.
 The `wc.Test` function runs a test suite against the provided function and prints success or failure.
@@ -822,4 +785,4 @@ func main() {
 }
 ```
 
-[See in playground](http://play.golang.org/p/M0bb5rWa7t)
+* [See in Playground](http://play.golang.org/p/M0bb5rWa7t)

@@ -6,9 +6,9 @@ preface.md
 mainmatter:
 intro.md
 basics.md
-control_flow.md
 types.md
 collection_types.md
+control_flow.md
 methods.md
 interfaces.md
 concurrency.md
