@@ -91,9 +91,15 @@ Go assignment between items of different type requires an explicit conversion wh
 ## Type assertion
 \label{sec:type-assertion}
 
-If you have an object of type interface and want to convert it
-to a specific type, you can use type assertion.
-A type assertion takes an interface value and extracts from it a value of the specified explicit type.
+If you have a value and want to convert it
+to another or a specific type (in case of `interface{})`, you can use type assertion.
+A type assertion takes a value and tries to create another version in
+the specified explicit type.
+
+In the example below, the `timeMap` function takes a value
+and if it can be asserted as a map of `interfaces{}` keyed by strings,
+then it injects a new entry called "updated_at" with the current time
+value.
 
 ```go
 package main
@@ -164,6 +170,20 @@ func main() {
 ```
 
 * [See in Playground](http://play.golang.org/p/69I8PAuoAV)
+
+Another example is when checking if an error is of a certain type:
+
+```go
+if err != nil {
+  if msqlerr, ok := err.(*mysql.MySQLError); ok && msqlerr.Number == 1062 {
+    log.Println("We got a MySQL duplicate :(")
+  } else {
+    return err
+  }
+}
+```
+
+
 * [Read more in the Effective Go guide](http://golang.org/doc/effective_go.html#interface_conversions)
 
 ## Structs
