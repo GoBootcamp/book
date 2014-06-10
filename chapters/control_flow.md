@@ -76,8 +76,194 @@ for {
 }
 ```
 
+## Switch case statement
+\label{sec:switch_case_statement}
 
-## Exercise: Loops and Functions
+Most programming languages have some sort switch case statement
+to allow developers to avoid doing complex and ugly series of `if else` 
+statements.
+
+```go
+package main
+
+import (
+	"fmt"
+	"time"
+)
+
+func main() {
+	now := time.Now().Unix()
+	mins := now % 2
+	switch mins {
+	case 0:
+		fmt.Println("even")
+	case 1:
+		fmt.Println("odd")
+	}
+}
+```
+
+* [See in Playground](http://play.golang.org/p/1_T5_w8yJm)
+
+There a few interesting things to know about this statement in Go:
+* You can only compare value of the same type.
+* You can set an optional default statement to be exectuted if all the
+  others fail.
+* You can use an expression in the case statement, for instance you can
+  calculate a value to use in the case:
+
+```go
+package main
+
+import "fmt"
+
+func main() {
+	num := 3
+	v := num % 2
+	switch v {
+	case 0:
+		fmt.Println("even")
+	case 3 - 2:
+		fmt.Println("odd")
+	}
+}
+```
+
+* [See in Playground](http://play.golang.org/p/Gu1Ey1M8uI)
+
+* You can have multiple values in a case statement:
+
+```go
+package main
+
+import "fmt"
+
+func main() {
+	score := 7
+	switch score {
+	case 0, 1, 3:
+		fmt.Println("Terrible")
+	case 4, 5:
+		fmt.Println("Mediocre")
+	case 6, 7:
+		fmt.Println("Not bad")
+	case 8, 9:
+		fmt.Println("Almost perfect")
+	case 10:
+		fmt.Println("hmm did you cheat?")
+	default:
+		fmt.Println(score, " off the chart")
+	}
+}
+```
+
+* [See in Playground](http://play.golang.org/p/KHjUOUtWgv)
+
+
+* You can execute all the following statements after a match using the
+  `fallthrough` statement:
+
+```go
+package main
+
+import "fmt"
+
+func main() {
+	n := 4
+	switch n {
+	case 0:
+		fmt.Println("is zero")
+		fallthrough
+	case 1:
+		fmt.Println("is <= 1")
+		fallthrough
+	case 2:
+		fmt.Println("is <= 2")
+		fallthrough
+	case 3:
+		fmt.Println("is <= 3")
+		fallthrough
+	case 4:
+		fmt.Println("is <= 4")
+		fallthrough
+	case 5:
+		fmt.Println("is <= 5")
+		fallthrough
+	case 6:
+		fmt.Println("is <= 6")
+		fallthrough
+	case 7:
+		fmt.Println("is <= 7")
+		fallthrough
+	case 8:
+		fmt.Println("is <= 8")
+		fallthrough
+	default:
+		fmt.Println("Try again!")
+	}
+}
+```
+
+```
+is <= 4
+is <= 5
+is <= 6
+is <= 7
+is <= 8
+Try again!
+```
+
+* [See in Playground](http://play.golang.org/p/Se9GbB1QCr)
+
+You can use a `break` statement inside your matched statement to exit
+the switch processing:
+
+```go
+package main
+
+import (
+	"fmt"
+	"time"
+)
+
+func main() {
+	n := 1
+	switch n {
+	case 0:
+		fmt.Println("is zero")
+		fallthrough
+	case 1:
+		fmt.Println("<= 1")
+		fallthrough
+	case 2:
+		fmt.Println("<= 2")
+		fallthrough
+	case 3:
+		fmt.Println("<= 3")
+		if time.Now().Unix()%2 == 0 {
+			fmt.Println("un pasito pa lante maria")
+			break
+		}
+		fallthrough
+	case 4:
+		fmt.Println("<= 4")
+		fallthrough
+	case 5:
+		fmt.Println("<= 5")
+	}
+}
+```
+
+* [See in Playground](http://play.golang.org/p/rFalZllNn1)
+
+```
+<= 1
+<= 2
+<= 3
+un pasito pa lante maria
+```
+
+## Exercise
 \label{sec:exercise_loops_and_funcs}
 
 You have 50 bitcoins to distribute to 10 users:
@@ -130,9 +316,9 @@ func main() {
 }
 ```
 
-[See in Playground](http://play.golang.org/p/jaKZWoCHbD)
+* [See in Playground](http://play.golang.org/p/jaKZWoCHbD)
 
-### Solution
+## Solution
 
 ```go
 package main
@@ -181,4 +367,4 @@ func main() {
 }
 ```
 
-[See in Playground](http://play.golang.org/p/D0HfGeICyj)
+* [See in Playground](http://play.golang.org/p/D0HfGeICyj)

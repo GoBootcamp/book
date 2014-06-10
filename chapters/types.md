@@ -575,6 +575,33 @@ allocation)
 Modify the code to use a pointer but still
 be able to initialize without using the dot notation.
 
+```go
+package main
+
+import "fmt"
+
+type User struct {
+	Id             int
+	Name, Location string
+}
+
+func (u *User) Greetings() string {
+	return fmt.Sprintf("Hi %s from %s",
+		u.Name, u.Location)
+}
+
+type Player struct {
+	*User
+	GameId int
+}
+
+func main() {
+	// insert code
+}
+```
+
+* [See in Playground](http://play.golang.org/p/Ia3-RiZ_ac)
+
 **Question:** We defined the `Greetings` method on a pointer to a `User`
 type. How come we were able to call it directly on the value?
 
@@ -614,7 +641,7 @@ func main() {
 }
 ```
 
-[See in Playground](http://play.golang.org/p/tpNVNC8hnX)
+* [See in Playground](http://play.golang.org/p/tpNVNC8hnX)
 
 **Answer:** That is because methods defined on a pointer are also
 automatically available on the value itself. The example didn't use a

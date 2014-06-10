@@ -223,7 +223,6 @@ func main() {
 ```
 
 * [See in Playground](http://play.golang.org/p/2z_6hNt_Vg)
-
 * [Go tour page](http://tour.golang.org/#33)
 
 
@@ -730,7 +729,7 @@ Similarly, when reading from a map if the key is not present the result is the z
 * [Go team blog post on maps](http://blog.golang.org/go-maps-in-action)
 * [Effective Go - maps](http://golang.org/doc/effective_go.html#maps)
 
-## Exercise: Map
+### Exercise
 
 
 Implement WordCount.
