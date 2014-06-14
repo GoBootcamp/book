@@ -73,10 +73,11 @@ Setup your path, as explained in Section~\ref{sec:setup_path}
 
 ## Extras
 
-Installing `Godoc` and `vet`, two very useful Go tools from the Go team,
+Installing `Godoc`, `vet` and `Golint`, three very useful Go tools from the Go team,
 is highly recommended:
 
     $ go get code.google.com/p/go.tools/cmd/godoc
     $ go get code.google.com/p/go.tools/cmd/vet
+    $ go get github.com/golang/lint/golint
 
 [Official resource](http://golang.org/doc/go1.2#go_tools_godoc)
