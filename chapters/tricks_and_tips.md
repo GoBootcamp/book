@@ -308,8 +308,8 @@ The "leaked params" are:
 The reason why `u` "leaks" in the `Greetings` method is because it's
 being used in the `fmt.Sprintf` function call as an argument.
 `name` and `location` are also "leaked" because they are used in the
-`User`'s literal value. Note that `id` doesn't leak because it's an
-`int` and `int` params don't leak.
+`User`'s literal value. Note that `id` doesn't leak because it's a
+value, only references and pointers can leak.
 
 X `argument does not escape` means that the argument doesn't "escape"
 the function, meaning that it's not used outside of the function so it's

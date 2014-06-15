@@ -346,7 +346,6 @@ func main() {
 
 	go func() {
 		resp, err := http.Get("http://matt.aimonetti.net/")
-		fmt.Println(err)
 		if err != nil {
 			errors <- &err
 		}
@@ -367,7 +366,7 @@ func main() {
 }
 ```
 
-[See in playground](http://play.golang.org/p/0NVG5RSfBF) but note that
+[See in playground](http://play.golang.org/p/JGHVPCFNGm) but note that
 in playground, you won't get a response due to sandboxing.
 
 We are using the `time.After` call as a timeout measure to exit if the
