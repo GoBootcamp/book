@@ -48,7 +48,7 @@ faq:
     answer: "Absolutely, send a pull request to [the book repository](https://github.com/GoBootcamp/book)."
   -
     question: "Do I need to have Go installed?"
-    answer: "No, all code examples can be executed and modified from your browser as long have you internet."
+    answer: "No, all code examples can be executed and modified from your browser as long as have you internet."
   -
     question: "Some of the material seems familiar"
     answer: "The book is largely based on the [Go tour](http://tour.golang.org/)"
@@ -63,7 +63,7 @@ testimonials:
     name: "Chad Fowler"
     title: "Author, technologist, consultant, speaker, teacher, musician, organizer"
     image: /images/chad.jpg
-    text: "I like Haskell better, but if you want to write Go, you probably should read this awesome (free) book"
+    text: "I like Haskell better, but if you want to write Go, you probably should read this awesome (free) book."
 
 marketing_content: ''
 
