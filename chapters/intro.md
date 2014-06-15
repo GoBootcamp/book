@@ -12,11 +12,12 @@ Aimonetti](http://matt.aimonetti.net) from
 * [Ross Hale](https://twitter.com/rrrosss)
 
 
-The event was hosted by [General Assembly Los
-Angeles](https://generalassemb.ly/los-angeles) and food was provided by [Cloud
-Foundry](http://www.cloudfoundry.com/)
+Content and review has been provided by various members of the
+community, if you want to add content or provide corrections, feel free
+to send a pull request to this book's [git repo](https://github.com/gobootcamp/book).
 
-Git hosting was provided by [GitHub](https://github.com)
+Git hosting for this book is provided by [GitHub](https://github.com)
+and is available [here](https://github.com/gobootcamp/book).
 
 This companion book contains material initially written specifically
 for this event as well as content from Google & the [Go team](http://tour.golang.org/) under [Creative Commons Attribution
