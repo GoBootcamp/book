@@ -222,7 +222,7 @@ contain an error param.
 [Effective Go section on errors](http://golang.org/doc/effective_go.html#errors)
 
 
-## Understanding the compiler's optimizations
+## Quick look at some compiler's optimizations
 \label{sec:compiler_optimizations}
 
 You can pass specific compiler flags to see what optimizations
