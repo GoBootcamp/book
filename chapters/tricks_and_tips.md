@@ -222,11 +222,103 @@ contain an error param.
 [Effective Go section on errors](http://golang.org/doc/effective_go.html#errors)
 
 
-## Return statements and conditions
+## Understanding the compiler's optimizations
+\label{sec:compiler_optimizations}
 
-TODO
+You can pass specific compiler flags to see what optimizations
+are being applied as well as how some aspects of memory management.
+This is an advanced feature, mainly for people who want to understand
+some of the compiler optimizations in place.
 
+Let's take the following code example from an earlier chapter:
 
+```go
+package main
+
+import "fmt"
+
+type User struct {
+	Id             int
+	Name, Location string
+}
+
+func (u *User) Greetings() string {
+	return fmt.Sprintf("Hi %s from %s",
+		u.Name, u.Location)
+}
+
+func NewUser(id int, name, location string) *User {
+	id++
+	return &User{id, name, location}
+}
+
+func main() {
+	u := NewUser(42, "Matt", "LA")
+	fmt.Println(u.Greetings())
+}
+```
+
+* [See in Playground](http://play.golang.org/p/7y0-u_FiKD)
+
+Build your file (here called `t.go`) passing some `gcflags`:
+
+```
+$ go build -gcflags=-m t.go
+# command-line-arguments
+./t.go:15: can inline NewUser
+./t.go:21: inlining call to NewUser
+./t.go:10: leaking param: u
+./t.go:10: leaking param: u
+./t.go:12: (*User).Greetings ... argument does not escape
+./t.go:15: leaking param: name
+./t.go:15: leaking param: location
+./t.go:17: &User literal escapes to heap
+./t.go:15: leaking param: name
+./t.go:15: leaking param: location
+./t.go:21: &User literal escapes to heap
+./t.go:22: main ... argument does not escape
+```
+
+The compiler notices that it can inline the `NewUser` function defined on line
+15 and inline it on line 21.
+[Dave Cheney](http://dave.cheney.net/) has a [great post](http://dave.cheney.net/2014/06/07/five-things-that-make-go-fast) about why Go's inlining is helping your
+programs run faster.
+
+Basically, the compiler moves the body of the `NewUser` function (L15) to where
+it's being called (L21) and therefore avoiding the overhead of a function call but
+increasing the binary size.
+
+The compiler creates the equivalent of:
+
+```go
+func main() {
+	id := 42 + 1
+	u := &User{id, "Matt", "LA"}
+	fmt.Println(u.Greetings())
+}
+```
+On a few lines, you see the potentially alarming `leaking param`
+message. It doesn't mean that there is a memory leak but that the param
+is kept alive even after returning.
+The "leaked params" are:
+
+* On the `Greetings`'s method: `u` (receiver)
+* On the `NewUser`'s functon: `name`, `location`
+
+The reason why `u` "leaks" in the `Greetings` method is because it's
+being used in the `fmt.Sprintf` function call as an argument.
+`name` and `location` are also "leaked" because they are used in the
+`User`'s literal value. Note that `id` doesn't leak because it's an
+`int` and `int` params don't leak.
+
+X `argument does not escape` means that the argument doesn't "escape"
+the function, meaning that it's not used outside of the function so it's
+safe to store it on the stack.
+
+On the other hand, you can see that `&User literal escapes to heap`.
+What it means is that the literal value is used outside of the function
+and therefore can't be stored on the stack. This is always the case when
+calling a method on a value and the method uses one or more fields.
 
 ## Expvar
 
