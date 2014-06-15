@@ -316,9 +316,10 @@ the function, meaning that it's not used outside of the function so it's
 safe to store it on the stack.
 
 On the other hand, you can see that `&User literal escapes to heap`.
-What it means is that the literal value is used outside of the function
-and therefore can't be stored on the stack. This is always the case when
-calling a method on a value and the method uses one or more fields.
+What it means is that the address of a literal value is used outside of the function
+and therefore can't be stored on the stack. The value _could_ be stored on the stack, 
+except a pointer to the value escapes the function, so the value has to to be moved to the heap to prevent the pointer referring to incorrect memory once the function returns.
+ This is always the case when calling a method on a value and the method uses one or more fields.
 
 ## Expvar
 
