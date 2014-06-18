@@ -62,13 +62,13 @@ version control systems.
 
 ## Windows
 
-Install the latest version by downloading the latest [installer](https://code.google.com/p/go/downloads/list?q=OpSys-Windows+Type%3DInstaller).
+Install the latest version by downloading the latest [installer](http://golang.org/dl/).
 
 [Official resource](http://golang.org/doc/install#windows)
 
 ## Linux
 
-Install from one of the [official linux packages](https://code.google.com/p/go/downloads/list)
+Install from one of the [official linux packages](http://golang.org/dl/)
 Setup your path, as explained in Section~\ref{sec:setup_path}
 
 ## Extras
