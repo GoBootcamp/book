@@ -411,7 +411,7 @@ func location(name, city string) (name, country string) {
 	default:
 		country = "Unknown"
 	}
-	return city, country
+	return
 }
 
 func main() {
