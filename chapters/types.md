@@ -361,8 +361,7 @@ type User struct {
 }
 
 type Player struct {
-	Id             int
-	Name, Location string
+	User
 	GameId         int
 }
 
