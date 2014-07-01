@@ -92,7 +92,7 @@ Go assignment between items of different type requires an explicit conversion wh
 \label{sec:type-assertion}
 
 If you have a value and want to convert it
-to another or a specific type (in case of `interface{})`, you can use type assertion.
+to another or a specific type (in case of `interface{}`), you can use type assertion.
 A type assertion takes a value and tries to create another version in
 the specified explicit type.
 
@@ -361,8 +361,7 @@ type User struct {
 }
 
 type Player struct {
-	Id             int
-	Name, Location string
+	User
 	GameId         int
 }
 
