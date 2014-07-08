@@ -106,7 +106,6 @@ Syntax](http://blog.golang.org/gos-declaration-syntax)
 \label{sec:constants}
 
 Constants are declared like variables, but with the `const` keyword.
-They can be declared 
 
 Constants can only be character, string, boolean, or numeric values
 and cannot be declared using the `:=` syntax.
