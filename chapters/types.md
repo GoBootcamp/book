@@ -12,7 +12,7 @@ Numeric types:
 
 uint        either 32 or 64 bits
 int         same size as uint
-uintptr     an unsigned integer large enough to store the uninterpreted bits of 
+uintptr     an unsigned integer large enough to store the uninterpreted bits of
             a pointer value
 uint8       the set of all unsigned  8-bit integers (0 to 255)
 uint16      the set of all unsigned 16-bit integers (0 to 65535)
@@ -22,7 +22,7 @@ uint64      the set of all unsigned 64-bit integers (0 to 18446744073709551615)
 int8        the set of all signed  8-bit integers (-128 to 127)
 int16       the set of all signed 16-bit integers (-32768 to 32767)
 int32       the set of all signed 32-bit integers (-2147483648 to 2147483647)
-int64       the set of all signed 64-bit integers 
+int64       the set of all signed 64-bit integers
             (-9223372036854775808 to 9223372036854775807)
 
 float32     the set of all IEEE-754 32-bit floating-point numbers
@@ -190,10 +190,10 @@ if err != nil {
 \label{sec:structs}
 
 A struct is a collection of fields/properties. You can define new
-types as structs or interfaces (Section~\ref{sec:interfaces}).
+types as structs or interfaces (Chapter~\ref{cha:interfaces}).
 If you are coming from an object-oriented background, you can
 think of a struct to be a light class that supports composition but
-not inheritance. Methods (Section~\ref{sec:methods}) and interfaces (Section~\ref{sec:interfaces}) are discussed at length in Chapter~\ref{cha:methods_and_interfaces}
+not inheritance. Methods are discussed at length in Chapter~\ref{cha:methods}
 
 You don't need to define getters and setters on struct fields, they can
 be accessed automatically. However, note that only exported fields
@@ -459,7 +459,7 @@ func main() {
 
 * [See in Playground](http://play.golang.org/p/wscd8inj9t)
 
-When using a struct litteral with an implicit composition, we can't just pass the composed fields. 
+When using a struct litteral with an implicit composition, we can't just pass the composed fields.
 We instead need to pass the types composing the struct.
 Once set, the fields are directly available.
 
@@ -524,7 +524,7 @@ type Job struct {
 func main() {
 	job := &Job{"demo", log.New(os.Stderr, "Job: ", log.Ldate)}
 	// same as
-	// job := &Job{Command: "demo", 
+	// job := &Job{Command: "demo",
 	//            Logger: log.New(os.Stderr, "Job: ", log.Ldate)}
 	job.Logger.Print("test")
 }
@@ -581,12 +581,12 @@ the interface without you writing any custom methods.
 
 Looking at the `User` / `Player` example, you might have noticed that we
 composed `Player` using `User` but it might be better to compose it with
-a pointer to a `User` struct. 
+a pointer to a `User` struct.
 The reason why a pointer might be better is because in Go, arguments are
 passed by value and not reference. If you have a small struct that is
 inexpensive to copy, that is fine, but more than likely, in real life,
 our `User` struct will be bigger and should not be copied. Instead we
-would want to pass by reference (using a pointer). 
+would want to pass by reference (using a pointer).
 (Section~\ref{sec:mutability} & Section~\ref{sec:method_receivers} discuss more in depth how calling
 a method on a type value vs a pointer affects mutability and memory
 allocation)
