@@ -21,6 +21,9 @@ html/*.html
 
 # Generated EPUB/MOBI files
 epub/
+# Keep necessary EPUB files.
+!epub/OEBPS/styles/custom_epub.css
+!epub/OEBPS/styles/page-template.xpgt
 
 # Generated ebooks
 ebooks/
