@@ -255,8 +255,8 @@ $ ls $GOPATH
 bin	pkg	src
 ```
 
-The `bin` folder will contain the Go compiled binaries, you
-probably added the bin path to your system path.
+The `bin` folder will contain the Go compiled binaries. You
+should probably add the bin path to your system path.
 
 The `pkg` folder contains the compiled versions of the available libraries
 so the compiler can link against them without recompiling them.
