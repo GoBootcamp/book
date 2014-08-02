@@ -38,7 +38,7 @@ consider [joining the Go Bootcamp Mailing List](http://groups.google.com/d/forum
 
 ## Objectives
 
-After the event, we expect that the attendees to leave with the
+After the event, we expect the attendees to leave with the
 following knowledge, skills and attributes.
 
 ###Knowledge
