@@ -16,7 +16,7 @@ Hopefully this tips will get new users more productive faster.
 * read all the awesome docs that they have on [golang.org](http://golang.org). [@vbatts](https://twitter.com/vbatts)
 * always use `gofmt`. [@darkhelmetlive](https://twitter.com/darkhelmetlive)
 * read a lot of source code. [@DrNic](https://twitter.com/drnic)
-* Learn and become familiar with tools and utilities, or create your own! They are as vital to your success as knowing the language. [@coreyprak] (https://twitter.com/coreyprak)
+* Learn and become familiar with tools and utilities, or create your own! They are as vital to your success as knowing the language. [@coreyprak](https://twitter.com/coreyprak)
 
 
 ## Alternate Ways to Import Packages
@@ -27,7 +27,7 @@ There are a few other ways of importing packages. We'll use the `fmt` package in
 
 - `import . "fmt"` - Allows content of the package to be accessed directly, without the need for it to be preceeded with `fmt`.
 
-- `import _ "fmt"` - Suppresses compiler warnings related to `fmt` if it is not being used. Executes initialization functions if there are any.
+- `import _ "fmt"` - Suppresses compiler warnings related to `fmt` if it is not being used, and executes initialization functions if there are any. The remainder of `fmt` is inaccessible.
 
 See [this](http://learngowith.me/alternate-ways-of-importing-packages/) blog post for more detailed information.
 
