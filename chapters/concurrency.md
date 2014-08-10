@@ -208,7 +208,7 @@ v, ok := <-ch
 
 `ok` is false if there are no more values to receive and the channel is closed.
 
-The loop `for i := range c` receives values from the channel repeatedly until it is closed.
+The loop `for i := range ch`  receives values from the channel repeatedly until it is closed.
 
 **Note:** Only the sender should close a channel, never the receiver. Sending on a closed channel will cause a panic.
 
@@ -427,7 +427,7 @@ To implement the `Walk` function, we need two things:
 * close the channel so the `range` call isn't stuck.
 
 We need to set a recursive call and for that, we are defining a
-non-exported `revWalk` function, the function walks the left side first,
+non-exported `recWalk` function, the function walks the left side first,
 then pushes the value to the channel and then walks the right side.
 This allows our range to get the values in the right order.
 Once all branches have been walked, we can close the channel to indicate
