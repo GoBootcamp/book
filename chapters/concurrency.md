@@ -80,7 +80,7 @@ Like maps (Section~\ref{sec:maps}) and slices (Section~\ref{sec:slices}), channe
 ch := make(chan int)
 ```
 
-By default, sends and receives block until the other side is ready. This allows goroutines to synchronize without explicit locks or condition variables.
+By default, sends and receives block wait until the other side is ready. This allows goroutines to synchronize without explicit locks or condition variables.
 
 ```go
 package main
@@ -193,7 +193,7 @@ routine, so our code doesn't block the main thread. The goroutine
 is being called before the channel is being emptied, but that is fine,
 the goroutine will wait until the channel is available.
 We then read a first value from the channel, which frees a spot and
-out goroutine can push its value to the channel.
+our goroutine can push its value to the channel.
 
 [Go tour page](http://tour.golang.org/#67)
 
