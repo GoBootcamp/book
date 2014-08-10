@@ -94,7 +94,7 @@ See this blog post on [refactoring Go code](http://matt.aimonetti.net/posts/2014
 ## Sets
 
 You might want to find a way to extract unique value from a collection.
-In other languages, you often have a set data structure now allowing
+In other languages, you often have a set data structure not allowing
 duplicates. Go doesn't have that built in, however it's not too hard to
 implement (due to a lack of generics, you do need to do that for most
 types, which can be cumbersome).
@@ -333,7 +333,7 @@ safe to store it on the stack.
 On the other hand, you can see that `&User literal escapes to heap`.
 What it means is that the address of a literal value is used outside of the function
 and therefore can't be stored on the stack. The value _could_ be stored on the stack, 
-except a pointer to the value escapes the function, so the value has to to be moved to the heap to prevent the pointer referring to incorrect memory once the function returns.
+except a pointer to the value escapes the function, so the value has to be moved to the heap to prevent the pointer referring to incorrect memory once the function returns.
  This is always the case when calling a method on a value and the method uses one or more fields.
 
 ## Expvar
