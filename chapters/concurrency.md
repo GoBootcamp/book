@@ -423,6 +423,7 @@ If you print `tree.New(1)` you will see the following tree:
 ```
 
 To implement the `Walk` function, we need two things:
+
 * walk each side of the tree and print the values
 * close the channel so the `range` call isn't stuck.
 
