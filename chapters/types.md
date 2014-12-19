@@ -459,7 +459,7 @@ func main() {
 
 * [See in Playground](http://play.golang.org/p/wscd8inj9t)
 
-When using a struct litteral with an implicit composition, we can't just pass the composed fields.
+When using a struct literal with an implicit composition, we can't just pass the composed fields.
 We instead need to pass the types composing the struct.
 Once set, the fields are directly available.
 
