@@ -193,7 +193,7 @@ routine, so our code doesn't block the main thread. The goroutine
 is being called before the channel is being emptied, but that is fine,
 the goroutine will wait until the channel is available.
 We then read a first value from the channel, which frees a spot and
-out goroutine can push its value to the channel.
+our goroutine can push its value to the channel.
 
 [Go tour page](http://tour.golang.org/#67)
 
