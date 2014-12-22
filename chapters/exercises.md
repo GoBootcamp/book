@@ -6,7 +6,7 @@ different challenges. Try to tackle the exercise of your choice
 by pairing with at least one person, ideally try to have 4 people by
 group.
 
-Fork the original repo (with the instructions), work on and it and send
+Fork the original repo (with the instructions), work on it and send
 a pull request when you are done.
 
 If your group wants to work on a new exercise, please create an

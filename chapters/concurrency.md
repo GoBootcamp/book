@@ -80,7 +80,7 @@ Like maps (Section~\ref{sec:maps}) and slices (Section~\ref{sec:slices}), channe
 ch := make(chan int)
 ```
 
-By default, sends and receives block until the other side is ready. This allows goroutines to synchronize without explicit locks or condition variables.
+By default, sends and receives block wait until the other side is ready. This allows goroutines to synchronize without explicit locks or condition variables.
 
 ```go
 package main
@@ -193,7 +193,7 @@ routine, so our code doesn't block the main thread. The goroutine
 is being called before the channel is being emptied, but that is fine,
 the goroutine will wait until the channel is available.
 We then read a first value from the channel, which frees a spot and
-out goroutine can push its value to the channel.
+our goroutine can push its value to the channel.
 
 [Go tour page](http://tour.golang.org/#67)
 
@@ -208,7 +208,7 @@ v, ok := <-ch
 
 `ok` is false if there are no more values to receive and the channel is closed.
 
-The loop `for i := range c` receives values from the channel repeatedly until it is closed.
+The loop `for i := range ch`  receives values from the channel repeatedly until it is closed.
 
 **Note:** Only the sender should close a channel, never the receiver. Sending on a closed channel will cause a panic.
 
@@ -423,11 +423,12 @@ If you print `tree.New(1)` you will see the following tree:
 ```
 
 To implement the `Walk` function, we need two things:
+
 * walk each side of the tree and print the values
 * close the channel so the `range` call isn't stuck.
 
 We need to set a recursive call and for that, we are defining a
-non-exported `revWalk` function, the function walks the left side first,
+non-exported `recWalk` function, the function walks the left side first,
 then pushes the value to the channel and then walks the right side.
 This allows our range to get the values in the right order.
 Once all branches have been walked, we can close the channel to indicate
