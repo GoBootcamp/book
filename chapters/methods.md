@@ -45,7 +45,7 @@ func main() {
 
 Note how methods are defined outside of the struct, if you have
 been writing Object Oriented code for a while, you might find that a
-bit odd at first. The method on the `User` type could de defined
+bit odd at first. The method on the `User` type could be defined
 anywhere in the package.
 
 [Go tour page](http://tour.golang.org/#52)
