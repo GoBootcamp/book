@@ -79,7 +79,7 @@ for {
 ## Switch case statement
 \label{sec:switch_case_statement}
 
-Most programming languages have some sort switch case statement
+Most programming languages have some sort of switch case statement
 to allow developers to avoid doing complex and ugly series of `if else` 
 statements.
 
@@ -108,7 +108,7 @@ func main() {
 There a few interesting things to know about this statement in Go:
 
 * You can only compare value of the same type.
-* You can set an optional default statement to be exectuted if all the
+* You can set an optional default statement to be executed if all the
   others fail.
 * You can use an expression in the case statement, for instance you can
   calculate a value to use in the case:
