@@ -214,8 +214,8 @@ import (
 )
 ```
 
-* [Go tour page](http://tour.golang.org/#4)
-* [Go tour page 2](http://tour.golang.org/#5)
+* [Go tour page](http://tour.golang.org/basics/1)
+* [Go tour page 2](http://tour.golang.org/basics/2)
 
 
 Usually, non standard lib packages are namespaced using a web
