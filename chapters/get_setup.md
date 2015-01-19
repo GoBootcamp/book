@@ -46,7 +46,7 @@ your system path:
     export GOPATH=$HOME/go
     export PATH=$PATH:$GOPATH/bin
 
-This will allow your Go workspace to always be set and will allow allow
+This will allow your Go workspace to always be set and will allow
 you to call the binaries you compiled.
 
 
