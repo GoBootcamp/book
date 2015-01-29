@@ -214,8 +214,8 @@ import (
 )
 ```
 
-* [Go tour: Packages](http://tour.golang.org/basics/1)
-* [Go tour: Imports](http://tour.golang.org/basics/2)
+* [Go Tour: Packages](http://tour.golang.org/basics/1)
+* [Go Tour: Imports](http://tour.golang.org/basics/2)
 
 
 Usually, non standard lib packages are namespaced using a web
@@ -347,7 +347,7 @@ func main() {
 }
 ```
 
-* [Function example](http://tour.golang.org/#7)
+* [Go Tour Functions example](http://tour.golang.org/basics/4)
 
 In the following example, instead of declaring the type of each parameter,
 we only declare one type that applies to both.
