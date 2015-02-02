@@ -355,9 +355,8 @@ package main
 import "fmt"
 
 type User struct {
-	Id       int
-	Name     string
-	Location string
+	Id             int
+	Name, Location string
 }
 
 type Player struct {
@@ -383,50 +382,9 @@ our `Player` struct has the same fields as the `User` struct
 but it also has a `GameId` field. Having to duplicate the field names
 isn't a big deal, but it can be simplified by composing our struct.
 
-```go
-type User struct {
-	Id             int
-	Name, Location string
-}
-
-type Player struct {
-	User
-	GameId int
-}
-```
-
 We can initialize a new variable of type `Player` two different ways.
 
-Using the dot notation to set the fields:
-
-```go
-package main
-
-import "fmt"
-
-type User struct {
-	Id             int
-	Name, Location string
-}
-
-type Player struct {
-	User
-	GameId int
-}
-
-func main() {
-	p := Player{}
-	p.Id = 42
-	p.Name = "Matt"
-	p.Location = "LA"
-	p.GameId = 90404
-	fmt.Printf("%+v", p)
-}
-```
-
-* [See in Playground](http://play.golang.org/p/kR-Cue8816)
-
-The other option is to use a struct literal:
+Either using the dot notation to set the fields as shown above, or using a struct literal:
 
 ```go
 package main
