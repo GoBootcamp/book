@@ -382,9 +382,7 @@ our `Player` struct has the same fields as the `User` struct
 but it also has a `GameId` field. Having to duplicate the field names
 isn't a big deal, but it can be simplified by composing our struct.
 
-We can initialize a new variable of type `Player` two different ways.
-
-Either using the dot notation to set the fields as shown above, or using a struct literal:
+We can initialize a new variable of type `Player` two different ways. Either using the dot notation to set the fields as shown above, or using a struct literal:
 
 ```go
 package main
