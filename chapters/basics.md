@@ -149,7 +149,7 @@ func main() {
 
 ## Printing Constants and Variables
 
-While you can print the value of a variable or constant using the builtin
+While you can print the value of a variable or constant using the built-in
 `print` and `println` functions, the more idiomatic and flexible way is to use the
 [`fmt` package](http://golang.org/pkg/fmt/)
 
@@ -517,7 +517,7 @@ func main() {
 [See in Playground](http://play.golang.org/p/FaWFYCZmfh)
 
 The only change between the two versions is that `newRelease` takes a
-pointer to an `Artist` value and when I intialize our `me` variable, I
+pointer to an `Artist` value and when I initialize our `me` variable, I
 used the `&` symbol to get a pointer to the value.
 
 Another place where you need to be careful is when calling methods on
