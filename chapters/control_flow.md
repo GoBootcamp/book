@@ -105,11 +105,13 @@ func main() {
 
 * [See in Playground](http://play.golang.org/p/1_T5_w8yJm)
 
-There a few interesting things to know about this statement in Go:
+There are a few interesting things to know about this statement in Go:
 
-* You can only compare value of the same type.
+* You can only compare values of the same type.
+
 * You can set an optional default statement to be executed if all the
   others fail.
+
 * You can use an expression in the case statement, for instance you can
   calculate a value to use in the case:
 

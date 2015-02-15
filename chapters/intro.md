@@ -52,7 +52,7 @@ following knowledge, skills and attributes.
 * know how to organize code in packages
 * know how to test code
 * know how to write documentation
-* know how to use json marshaling
+* know how to use JSON marshaling
 * know how to build a web API (depending on exercises)
 * know how to test a web API (depending on exercises)
 * know how to cross compile

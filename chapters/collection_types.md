@@ -70,7 +70,7 @@ func main() {
 
 Note how we used the [`fmt` package](http://golang.org/pkg/fmt/) using `Printf` and used the `%q` "verb" to print each element quoted.
 
-If we had used `Println` or the `%s` verb, we would have add a different result:
+If we had used `Println` or the `%s` verb, we would have had a different result:
 
 ```go
 package main

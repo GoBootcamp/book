@@ -25,7 +25,7 @@ There are a few other ways of importing packages. We'll use the `fmt` package in
 
 - `import format "fmt"` - Creates an alias of `fmt`. Preceed all `fmt` package content with `format.` instead of `fmt.`.
 
-- `import . "fmt"` - Allows content of the package to be accessed directly, without the need for it to be preceeded with `fmt`.
+- `import . "fmt"` - Allows content of the package to be accessed directly, without the need for it to be preceded with `fmt`.
 
 - `import _ "fmt"` - Suppresses compiler warnings related to `fmt` if it is not being used, and executes initialization functions if there are any. The remainder of `fmt` is inaccessible.
 
