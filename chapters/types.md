@@ -665,5 +665,5 @@ func main() {
 **Answer:** That is because methods defined on a pointer are also
 automatically available on the value itself. The example didn't use a
 pointer on purpose, so the dot notation was working right away. In the
-pointer solution, an zero value player is composed of a nil pointer of
+pointer solution, a zero value player is composed of a nil pointer of
 type `User` and therefore, we can't call a field on a nil pointer.
