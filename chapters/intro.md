@@ -21,7 +21,7 @@ and is available [here](https://github.com/gobootcamp/book).
 
 This companion book contains material initially written specifically
 for this event as well as content from Google & the [Go team](http://tour.golang.org/) under [Creative Commons Attribution
-3.0 License](http://creativecommons.org/licenses/by/3.0/) and code under licensed under a BSD license.
+3.0 License](http://creativecommons.org/licenses/by/3.0/) and code licensed under a BSD license.
 The rest of of the content is also provided under [Creative Commons Attribution
 3.0 License](http://creativecommons.org/licenses/by/3.0/).
 
