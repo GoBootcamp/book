@@ -375,7 +375,7 @@ request didn't give a response within 200ms.
 ## Exercise: Equivalent Binary Trees
 \label{sec:exercise_equiv_bin_trees}
 
-[Online Assignment](http://tour.golang.org/#72)
+[Online Assignment](https://tour.golang.org/concurrency/8)
 
 There can be many different binary trees with the same sequence of values stored at the leaves. For example, here are two binary trees storing the sequence 1, 1, 2, 3, 5, 8, 13.
 
