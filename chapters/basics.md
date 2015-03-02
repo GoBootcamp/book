@@ -1,13 +1,13 @@
 #The Basics
 \label{cha:basics}
 
-Go is often referred as a "simple" programming language, a language that can be
+Go is often referred to as a "simple" programming language, a language that can be
 learned in a few hours if you already know another language.
 Go was designed to feel familiar and to stay as simple as possible,
 [the entire language specification](http://golang.org/ref/spec) fits
 in just a few pages.
 
-There are few concepts we are going to explore before writing our
+There are a few concepts we are going to explore before writing our
 first application.
 
 ## Variables & inferred typing
