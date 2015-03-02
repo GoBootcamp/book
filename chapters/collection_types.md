@@ -466,7 +466,7 @@ func main() {
 	pow := make([]int, 10)
 	for i := range pow {
 		pow[i] = 1 << uint(i)
-		if pow[i] > 16 {
+		if pow[i] >= 16 {
 			break
 		}
 	}
@@ -475,7 +475,7 @@ func main() {
 }
 ```
 
-* [See in Playground](http://play.golang.org/p/T65dcE8fZ7)
+* [See in Playground](http://play.golang.org/p/1S4ApCLxaD)
 
 
 You can also skip an iteration by using `continue`:
