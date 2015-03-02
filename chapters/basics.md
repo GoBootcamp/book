@@ -160,7 +160,7 @@ func main() {
 }
 ```
 
-`fmt.Println` prints the pass variables values and appends a newline.
+`fmt.Println` prints the passed in variables' values and appends a newline.
 `fmt.Printf` is used when you want to print one or multiple values
 using a defined format specifier.
 
@@ -219,7 +219,7 @@ import (
 
 
 Usually, non standard lib packages are namespaced using a web
-url, for instance I ported to Go some Rails logic, including the cryptography code used in
+url. For instance, I ported to Go some Rails logic, including the cryptography code used in
 Rails 4. I hosted the source code containing a few packages on github, in the following repository [http://github.com/mattetti/goRailsYourself](http://github.com/mattetti/goRailsYourself)
 
 To import the crypto package, I would need to use the following import
