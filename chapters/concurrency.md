@@ -375,7 +375,7 @@ request didn't give a response within 200ms.
 ## Exercise: Equivalent Binary Trees
 \label{sec:exercise_equiv_bin_trees}
 
-[Online Assignment](http://tour.golang.org/#72)
+[Online Assignment](https://tour.golang.org/concurrency/8)
 
 There can be many different binary trees with the same sequence of values stored at the leaves. For example, here are two binary trees storing the sequence 1, 1, 2, 3, 5, 8, 13.
 
@@ -471,14 +471,24 @@ func Same(t1, t2 *tree.Tree) bool {
 	ch2 := make(chan int)
 	go Walk(t1, ch1)
 	go Walk(t2, ch2)
-	// iterate over the first channel
-	for i := range ch1 {
-		// if the value of the second channel doesn't match
-		if i != <-ch2 {
+
+	for {
+		x1, ok1 := <-ch1
+		x2, ok2 := <-ch2
+		switch {
+		case ok1 != ok2:
+			// not the same size
 			return false
+		case !ok1:
+			// both channels are empty
+			return true
+		case x1 != x2:
+			// elements are different
+			return false
+		default:
+			// keep iterating
 		}
 	}
-	return true
 }
 
 func main() {
