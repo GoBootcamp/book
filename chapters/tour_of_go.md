@@ -9,7 +9,7 @@ in just a few pages.
 
 Here are the concepts we are going to explore before writing our
 first application. To walk through these various concepts, we are
-going to use Go's official [Tour of Go](http://tour.golang.org/) web
+going to use Go's official [Tour of Go](https://tour.golang.org/) web
 application. 
 
 ## Basic Concepts
@@ -21,11 +21,11 @@ Every Go program is made up of packages.
 Programs start running in package main.
 By convention, the package name is the same as the last element of the import path. For instance, the "math/rand" package comprises files that begin with the statement package rand.
 
-[Package example](http://tour.golang.org/#4)
+[Package example](https://tour.golang.org/basics/1)
 
 ### Imports
 
-* [Imports example](http://tour.golang.org/#5)
+* [Imports example](https://tour.golang.org/basics/2)
 
 ### Exported names
 
@@ -33,7 +33,7 @@ After importing a package, you can refer to the names it exports.
 In Go, a name is exported if it begins with a capital letter.
 `Foo` is an exported name, as is `FOO`. The name `foo` is not exported.
 
-* [Exported names example](http://tour.golang.org/#6)
+* [Exported names example](https://tour.golang.org/basics/3)
 
 ### Functions, signature, return values, named results
 
@@ -43,10 +43,10 @@ Functions can be defined to return any number of values.
 Return values are always typed.
 
 
-* [Function example](http://tour.golang.org/#7)
-* [Function with arguments sharing the same type](http://tour.golang.org/#8)
-* [Function with multiple results](http://tour.golang.org/#9)
-* [Function with named results](http://tour.golang.org/#10)
+* [Function example](https://tour.golang.org/basics/4)
+* [Function with arguments sharing the same type](https://tour.golang.org/basics/5)
+* [Function with multiple results](https://tour.golang.org/basics/6)
+* [Function with named results](https://tour.golang.org/basics/7)
 
 #### Resources
 
@@ -62,9 +62,9 @@ Inside a function, the `:=` short assignment statement can be used in place of a
 Outside a function, every construct begins with a keyword (`var`,
 `func`, and so on) and the `:=` construct is not available.
 
-* [Variables example](http://tour.golang.org/#11)
-* [Initialization of variables](http://tour.golang.org/#12)
-* [Short variable declaration: `:=`](http://tour.golang.org/#13)
+* [Variables example](https://tour.golang.org/basics/8)
+* [Initialization of variables](https://tour.golang.org/basics/9)
+* [Short variable declaration: `:=`](https://tour.golang.org/basics/10)
 
 
 ### Basic types
@@ -87,7 +87,7 @@ float32 float64
 complex64 complex128
 ```
 
-* [Basic types example](http://tour.golang.org/#14)
+* [Basic types example](https://tour.golang.org/basics/11)
 
 ### Type conversion
 
@@ -108,7 +108,7 @@ u := uint(f)
 ```
 Go assignment between items of different type requires an explicit conversion. 
 
-* [Type conversion example](http://tour.golang.org/#15)
+* [Type conversion example](https://tour.golang.org/basics/13)
 
 
 ### Constants
@@ -131,8 +131,8 @@ const (
 )
 ```
 
-* [Constants example](http://tour.golang.org/#16)
-* [Numeric Constants](http://tour.golang.org/#17)
+* [Constants example](https://tour.golang.org/basics/15)
+* [Numeric Constants](https://tour.golang.org/basics/16)
 
 ### For Loop
 
@@ -167,10 +167,10 @@ for {
 }
 ```
 
-* [For loop example](http://tour.golang.org/#18)
-* [For loop without pre/post statements](http://tour.golang.org/#19)
-* [For loop as a `while` loop](http://tour.golang.org/#20)
-* [Infinite loop](http://tour.golang.org/#21)
+* [For loop example](https://tour.golang.org/flowcontrol/1)
+* [For loop without pre/post statements](https://tour.golang.org/flowcontrol/2)
+* [For loop as a `while` loop](https://tour.golang.org/flowcontrol/3)
+* [Infinite loop](https://tour.golang.org/flowcontrol/4)
 
 ### If statement
 
@@ -192,14 +192,14 @@ if err := foo(); err != nil {
 }
 ```
 
-* [`If` statement](http://tour.golang.org/#22)
-* [`If` with a short statement](http://tour.golang.org/#23)
-* [`If` and `else` example](http://tour.golang.org/#24)
+* [`If` statement](https://tour.golang.org/flowcontrol/5)
+* [`If` with a short statement](https://tour.golang.org/flowcontrol/6)
+* [`If` and `else` example](https://tour.golang.org/flowcontrol/7)
 
 
 ###Exercises
 
-[Loops and Functions exercise](http://tour.golang.org/#25)
+[Loops and Functions exercise](https://tour.golang.org/flowcontrol/8)
 
 **Solutions**:
 

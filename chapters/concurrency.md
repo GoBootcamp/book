@@ -58,7 +58,7 @@ func main() {
 
 [See in playground](http://play.golang.org/p/6PHXHha_Uv)
 
-[Go tour page](http://tour.golang.org/#65)
+[Go tour page](https://tour.golang.org/concurrency/1)
 
 
 ## Channels
@@ -109,7 +109,7 @@ func main() {
 
 [See in playground](http://play.golang.org/p/E-U0Kfd4IE)
 
-[Go tour page](http://tour.golang.org/#66)
+[Go tour page](https://tour.golang.org/concurrency/2)
 
 ### Buffered channels
 
@@ -195,7 +195,7 @@ the goroutine will wait until the channel is available.
 We then read a first value from the channel, which frees a spot and
 our goroutine can push its value to the channel.
 
-[Go tour page](http://tour.golang.org/#67)
+[Go tour page](https://tour.golang.org/concurrency/3)
 
 ## Range and close
 \label{sec:range_close}
@@ -241,7 +241,7 @@ func main() {
 
 [See in playground](http://play.golang.org/p/qtNyWuqESE)
 
-[Go tour page](http://tour.golang.org/#68)
+[Go tour page](https://tour.golang.org/concurrency/4)
 
 ## Select
 \label{sec:select}
@@ -326,7 +326,7 @@ func main() {
 
 [See in playground](http://play.golang.org/p/s03PRK3FZe)
 
-[Go tour page](http://tour.golang.org/#70)
+[Go tour page](https://tour.golang.org/concurrency/6)
 
 ### Timeout
 
@@ -375,7 +375,7 @@ request didn't give a response within 200ms.
 ## Exercise: Equivalent Binary Trees
 \label{sec:exercise_equiv_bin_trees}
 
-[Online Assignment](http://tour.golang.org/#72)
+[Online Assignment](https://tour.golang.org/concurrency/7)
 
 There can be many different binary trees with the same sequence of values stored at the leaves. For example, here are two binary trees storing the sequence 1, 1, 2, 3, 5, 8, 13.
 

@@ -32,7 +32,7 @@ func main() {
 }
 ```
 
-[Golang tour page](http://tour.golang.org/#31)
+[Golang tour page](https://tour.golang.org/moretypes/6)
 
 
 You can also set the array entries as you declare the array:
@@ -171,7 +171,7 @@ func main() {
 }
 ```
 
-* [Go tour page](http://tour.golang.org/#33)
+* [Go tour page](https://tour.golang.org/moretypes/7)
 
 ### Slicing a slice
 
@@ -223,7 +223,7 @@ func main() {
 ```
 
 * [See in Playground](http://play.golang.org/p/2z_6hNt_Vg)
-* [Go tour page](http://tour.golang.org/#33)
+* [Go tour page](https://tour.golang.org/moretypes/8)
 
 
 ### Making slices
@@ -250,8 +250,6 @@ func main() {
 * [See in Playground](http://play.golang.org/p/CX5z79KYsK)
 
 It works by allocating a zeroed array and returning a slice that refers to that array.
-
-* [Go tour](http://tour.golang.org/#34)
 
 
 ### Appending to a slice
@@ -379,7 +377,7 @@ func main() {
 }
 ```
 * [See in Playground](http://play.golang.org/p/inw1CunExE)
-* [Go tour page](http://tour.golang.org/#35)
+* [Go tour page](https://tour.golang.org/moretypes/10)
 
 ### Resources
 
@@ -428,7 +426,7 @@ Which will print:
 2**7 = 128
 ```
 
-* [Go tour page](http://tour.golang.org/#36)
+* [Go tour page](https://tour.golang.org/moretypes/12)
 
 
 You can skip the index or value by assigning to `_`.
@@ -450,7 +448,7 @@ func main() {
 }
 ```
 
-* [Go tour page](http://tour.golang.org/#37)
+* [Go tour page](https://tour.golang.org/moretypes/13)
 
 ### Break & continue
 
@@ -751,7 +749,7 @@ func main() {
 ```
 
 * [See in Playground](http://play.golang.org/p/-7aN1ASYYx)
-* [Online assignment](http://tour.golang.org/#43)
+* [Online assignment](https://tour.golang.org/moretypes/19)
 
 
 It should return a map of the counts of each "word" in the string `s`.

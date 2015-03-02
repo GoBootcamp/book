@@ -48,8 +48,6 @@ been writing Object Oriented code for a while, you might find that a
 bit odd at first. The method on the `User` type could be defined
 anywhere in the package.
 
-[Go tour page](http://tour.golang.org/#52)
-
 ## Code organization
 
 Methods can be defined on any file in the package, but my
@@ -156,7 +154,7 @@ func main() {
 }
 ```
 
-[Playground Example](http://tour.golang.org/#53)
+[Playground Example](https://tour.golang.org/methods/2)
 
 
 ## Method receivers
@@ -237,6 +235,6 @@ However `Scale()` has to be defined on a pointer since it does modify the receiv
 `Scale()` resets the values of the `X` and `Y` fields.
 
 
-[Go tour page](http://tour.golang.org/#54)
+[Go tour page](https://tour.golang.org/methods/3)
 
 

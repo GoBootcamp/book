@@ -189,7 +189,7 @@ func main() {
 ## Exercise: Errors
 \label{sec:exercise_errors}
 
-[Online assignment](http://tour.golang.org/#58)
+[Online assignment](https://tour.golang.org/methods/9)
 
 Copy your `Sqrt` function from the earlier exercises (Section~\ref{sec:exercise_loops_and_funcs}) and modify it to return an `error` value.
 
