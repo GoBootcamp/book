@@ -11,7 +11,7 @@ Variables declared by the statement are only in scope until the end of
 the `if`.
 Variables declared inside an if short statement are also available inside any of the else blocks.
 
-* [`If` statement example](http://tour.golang.org/#22)
+* [`If` statement example](https://tour.golang.org/flowcontrol/)
 
 
 ```go
@@ -21,7 +21,7 @@ if answer != 42 {
 ```
 
 
-* [`If` with a short statement](http://tour.golang.org/#23)
+* [`If` with a short statement](https://tour.golang.org/flowcontrol/6)
 
 
 ```go
@@ -30,7 +30,7 @@ if err := foo(); err != nil {
 }
 ```
 
-* [`If` and `else` example](http://tour.golang.org/#24)
+* [`If` and `else` example](https://tour.golang.org/flowcontrol/7)
 
 
 ## For Loop
@@ -41,7 +41,7 @@ The basic for loop looks as it does in C or Java, except that the ( ) are gone (
 As in C or Java, you can leave the pre and post statements empty.
 
 
-* [For loop example](http://tour.golang.org/#18)
+* [For loop example](https://tour.golang.org/flowcontrol/1)
 
 ```go
 sum := 0
@@ -50,7 +50,7 @@ for i := 0; i < 10; i++ {
 }
 ```
 
-* [For loop without pre/post statements](http://tour.golang.org/#19)
+* [For loop without pre/post statements](https://tour.golang.org/flowcontrol/2)
 
 ```go
 sum := 1
@@ -59,7 +59,7 @@ for ; sum < 1000; {
 }
 ```
 
-* [For loop as a `while` loop](http://tour.golang.org/#20)
+* [For loop as a `while` loop](https://tour.golang.org/flowcontrol/3)
 
 ```go
 sum := 1
@@ -68,7 +68,7 @@ for sum < 1000 {
 }
 ```
 
-* [Infinite loop](http://tour.golang.org/#21)
+* [Infinite loop](https://tour.golang.org/flowcontrol/4)
 
 ```go
 for {

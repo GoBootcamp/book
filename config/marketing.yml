@@ -51,7 +51,7 @@ faq:
     answer: "No, all code examples can be executed and modified from your browser as long as have you internet."
   -
     question: "Some of the material seems familiar"
-    answer: "The book is largely based on the [Go tour](http://tour.golang.org/)"
+    answer: "The book is largely based on the [Go tour](https://tour.golang.org/)"
 
 testimonials:
   -
