@@ -375,22 +375,22 @@ In the following example, the `location` function returns two string values.
 ```go
 func location(city string) (string, string) {
 	var region string
-	var continent string
+	var country string
 
 	switch city {
 	case "Los Angeles", "LA", "Santa Monica":
-		region, continent = "California", "North America"
+		region, country = "California", "North America"
 	case "New York", "NYC":
-		region, continent = "New York", "North America"
+		region, country = "New York", "North America"
 	default:
-		region, continent = "Unknown", "Unknown"
+		region, country = "Unknown", "Unknown"
 	}
-	return region, continent
+	return region, country
 }
 
 func main() {
-	region, continent := location("Santa Monica")
-	fmt.Printf("Matt lives in %s, %s", region, continent)
+	region, country := location("Santa Monica")
+	fmt.Printf("Matt lives in %s, %s", region, country)
 }
 ```
 
@@ -403,19 +403,19 @@ If the result parameters are named, a return statement without arguments returns
 
 
 ```go
-func location(name, city string) (name, continent string) {
+func location(name, city string) (name, country string) {
 	switch city {
 	case "New York", "LA", "Chicago":
-		continent = "North America"
+		country = "North America"
 	default:
-		continent = "Unknown"
+		country = "Unknown"
 	}
 	return
 }
 
 func main() {
-	name, continent := location("Matt", "LA")
-	fmt.Printf("%s lives in %s", name, continent)
+	name, country := location("Matt", "LA")
+	fmt.Printf("%s lives in %s", name, country)
 }
 ```
 
