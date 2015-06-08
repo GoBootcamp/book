@@ -395,7 +395,7 @@ func main() {
 ```
 
 
-* [See in playground](http://play.golang.org/p/8iduSCRNiO)
+* [See in playground](http://play.golang.org/p/e265ckMmSC)
 
 Functions take parameters. In Go, functions can return multiple "result parameters", not just a single value. They can be named and act just like variables.
 
@@ -403,7 +403,7 @@ If the result parameters are named, a return statement without arguments returns
 
 
 ```go
-func location(name, city string) (name, continent string) {
+func location(name, city string) (region, continent string) {
 	switch city {
 	case "New York", "LA", "Chicago":
 		continent = "North America"
@@ -414,12 +414,12 @@ func location(name, city string) (name, continent string) {
 }
 
 func main() {
-	name, continent := location("Matt", "LA")
-	fmt.Printf("%s lives in %s", name, continent)
+	region, continent := location("Matt", "LA")
+	fmt.Printf("%s lives in %s", region, continent)
 }
 ```
 
-* [See in Playground](http://play.golang.org/p/aOSABxXoiU)
+* [See in Playground](http://play.golang.org/p/aX92mw7USF)
 
 I personally recommend against using named return parameters because
 they often cause more confusion than they save time or help clarify your
