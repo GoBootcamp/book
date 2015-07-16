@@ -8,7 +8,7 @@ The easiest way to install Go for development on OS X is to use
 
 Using `Terminal.app` install homebrew:
 
-    $ ruby -e "$(curl -fsSL https://raw.github.com/Homebrew/homebrew/go/install)"
+    $ ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
 Once homebrew is installed, install Go to be able to crosscompile:
 
