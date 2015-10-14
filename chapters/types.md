@@ -572,7 +572,7 @@ to set a structure before using a value, see (Section~\ref{sec:custom_constructo
 What is really nice with the implicit composition is that it allows to
 easily and cheaply make your structs implement interfaces.
 Imagine that you have a function that takes variables implementing an
-interface with the `Print` method. My adding `*log.Logger` to your
+interface with the `Print` method. By adding `*log.Logger` to your
 struct (and initializing it properly), your struct is now implementing
 the interface without you writing any custom methods.
 
