@@ -438,7 +438,7 @@ to pass pointers (or use a structure using reference values like
 slices (Section~\ref{sec:slices}) and maps (Section~\ref{sec:maps}).
 
 To get the pointer of a value, use the `&` symbol in front of the
-value, to dereference a
+value; to dereference a
 pointer, use the `*` symbol.
 
 Methods are often defined on pointers and not values (although they can
@@ -455,7 +455,7 @@ resp, err := client.Get("http://gobootcamp.com")
 \label{sec:mutability}
 
 In Go, only constants are immutable. However because arguments are
-passed by value, a function receiving an value argument and mutating it, won't
+passed by value, a function receiving a value argument and mutating it, won't
 mutate the original value.
 
 ```go
