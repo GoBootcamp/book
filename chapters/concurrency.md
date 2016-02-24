@@ -357,7 +357,7 @@ func main() {
 			fmt.Printf("%s", r.Body)
 			return
 		case err := <-errors:
-			log.Fatal(err)
+			log.Fatal(*err)
 		case <-time.After(200 * time.Millisecond):
 			fmt.Printf("Timed out!")
 			return
@@ -366,7 +366,7 @@ func main() {
 }
 ```
 
-[See in playground](http://play.golang.org/p/JGHVPCFNGm) but note that
+[See in playground](http://play.golang.org/p/IlQV_w9yXM) but note that
 in playground, you won't get a response due to sandboxing.
 
 We are using the `time.After` call as a timeout measure to exit if the
