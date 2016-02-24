@@ -32,8 +32,7 @@ func main() {
 }
 ```
 
-[Golang tour page](https://tour.golang.org/moretypes/6)
-
+* [Golang tour page](https://tour.golang.org/moretypes/6)
 
 You can also set the array entries as you declare the array:
 
@@ -65,6 +64,7 @@ func main() {
 ```
 
 * [See in Playground](http://play.golang.org/p/lxVUhtyJJP)
+
 
 ### Printing arrays
 
@@ -116,7 +116,6 @@ func main() {
 
 * [See in Playground](http://play.golang.org/p/L6faG4RMPx)
 
-
 Trying to access or set a value at an index that doesn't exist will
 prevent your program from compiling, for instance, try to compile the
 following code:
@@ -138,12 +137,12 @@ Invalid array index 3 (out of bounds for 2-element array)
 
 That's because our array is of length 2 meaning that the only 2
 available indexes are 0 and 1. Trying to access index 3 results in an
-error that tells us that we are trying to access an index that is of
+error that tells us that we are trying to access an index that is out of
 bounds since our array only contains 2 elements and we are trying to
 access the 4th element of the array.
 
 Slices, the type that we are going to see next is more often used, due
-  to the fact that we don't always know in advance the length of the array we need.
+to the fact that we don't always know in advance the length of the array we need.
 
 
 ## Slices
@@ -173,6 +172,7 @@ func main() {
 
 * [Go tour page](https://tour.golang.org/moretypes/7)
 
+
 ### Slicing a slice
 
 Slices can be re-sliced, creating a new slice value that points to the same array.
@@ -183,7 +183,7 @@ The expression
 s[lo:hi]
 ```
 
-evaluates to a slice of the elements from lo through hi-1, inclusive. Thus
+evaluates to a slice of the elements from `lo` through `hi-1`, inclusive. Thus
 
 ```go
 s[lo:lo]
@@ -196,8 +196,7 @@ s[lo:lo+1]
 ```
 has one element.
 
-Note: lo and hi would be integers representing indexes.
-
+Note: `lo` and `hi` would be integers representing indexes.
 
 ```go
 package main
@@ -280,7 +279,6 @@ func main() {
 ```
 
 * [See in Playground](http://play.golang.org/p/rNRt6jvlFl)
-
 
 You can append more than one entry to a slice:
 
@@ -376,8 +374,10 @@ func main() {
     // nil!
 }
 ```
+
 * [See in Playground](http://play.golang.org/p/inw1CunExE)
 * [Go tour page](https://tour.golang.org/moretypes/10)
+
 
 ### Resources
 
@@ -428,7 +428,6 @@ Which will print:
 
 * [Go tour page](https://tour.golang.org/moretypes/12)
 
-
 You can skip the index or value by assigning to `_`.
 If you only want the index, drop the ", value" entirely.
 
@@ -449,6 +448,7 @@ func main() {
 ```
 
 * [Go tour page](https://tour.golang.org/moretypes/13)
+
 
 ### Break & continue
 
@@ -474,7 +474,6 @@ func main() {
 ```
 
 * [See in Playground](http://play.golang.org/p/1S4ApCLxaD)
-
 
 You can also skip an iteration by using `continue`:
 
@@ -531,6 +530,7 @@ Chicago has 2714856 inhabitants
 
 * [See in Playground](http://play.golang.org/p/rg5sc_Nl-P)
 
+
 ### Exercise
 
 Given a list of names, you need to organize each name
@@ -556,8 +556,8 @@ After you implement your solution, you should get the following output
 (slice of slice of strings):
 
 ```go
-[[] [] [Ava Mia] [Evan Neil Adam Matt Emma] [Emily Chloe] 
-[Martin Olivia Sophia Alexis] [Katrina Madison Abigail Addison Natalie] 
+[[] [] [Ava Mia] [Evan Neil Adam Matt Emma] [Emily Chloe]
+[Martin Olivia Sophia Alexis] [Katrina Madison Abigail Addison Natalie]
 [Isabella Samantha] [Elizabeth]]
 ```
 
@@ -595,12 +595,12 @@ func main() {
 
 There are a few interesting things to note.
 To avoid an out of bounds insert, we need our
-`output` slice to be big enough. But we don't want it to 
+`output` slice to be big enough. But we don't want it to
 be too big. That's why we need to do a first pass through all the names
-and find the longest. 
+and find the longest.
 We use the longest name length to set the length of the `output` slice
 length.
-Slices are zero indexed, so when inserting the names, we need to get the 
+Slices are zero indexed, so when inserting the names, we need to get the
 length of the name minus one.
 
 
@@ -636,7 +636,6 @@ map[string]int{"Nicolas Cage":50, "Selena Gomez":21, "Jude Law":41,
 
 * [See in Playground](http://play.golang.org/p/ttJ-3xgzuk)
 
-
 When not using map literals like above, maps must be created with make (not new) before use.
 The nil map is empty and cannot be assigned to.
 
@@ -665,7 +664,6 @@ func main() {
 
 When using map literals, if the top-level type is just a type name, you can omit it from the elements of the literal.
 
-
 ```go
 package main
 
@@ -687,6 +685,7 @@ func main() {
 ```
 
 * [See in Playground](http://play.golang.org/p/nvGq-9gQ5z)
+
 
 ### Mutating maps
 
@@ -716,10 +715,8 @@ elem, ok = m[key]
 
 * [See in Playground](http://play.golang.org/p/pvfk9maSsh)
 
-
-If key is in `m`, `ok` is true. If not, `ok` is false and elem is the zero value for the map's element type.
+If `key` is in `m`, `ok` is true. If not, `ok` is false and `elem` is the zero value for the map's element type.
 Similarly, when reading from a map if the key is not present the result is the zero value for the map's element type.
-
 
 
 ### Resources
@@ -727,8 +724,8 @@ Similarly, when reading from a map if the key is not present the result is the z
 * [Go team blog post on maps](http://blog.golang.org/go-maps-in-action)
 * [Effective Go - maps](http://golang.org/doc/effective_go.html#maps)
 
-### Exercise
 
+### Exercise
 
 Implement WordCount.
 
@@ -750,7 +747,6 @@ func main() {
 
 * [See in Playground](http://play.golang.org/p/-7aN1ASYYx)
 * [Online assignment](https://tour.golang.org/moretypes/19)
-
 
 It should return a map of the counts of each "word" in the string `s`.
 The `wc.Test` function runs a test suite against the provided function and prints success or failure.
