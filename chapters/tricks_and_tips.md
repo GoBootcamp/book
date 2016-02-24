@@ -43,7 +43,7 @@ formatting, also fixes imports.
 ## Organization
 
 Go is a pretty easy programming language to learn but the hardest
-thing that developers at first is how to organize their code. Rails
+thing for developers at first is how to organize their code. Rails
 became popular for many reasons and scaffolding was one of them. It gave
 new developers clear directions and places to put their code and idioms
 to follow.
