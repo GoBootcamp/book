@@ -298,7 +298,7 @@ x := new(int)
 ```
 
 As seen in (Section~\ref{sec:structs}) a common way to "initialize" a
-variable containing struct or a reference to one, is to create a struct literal. Another option is to create a constructor.
+variable containing a struct or a reference to one, is to create a struct literal. Another option is to create a constructor.
 This is usually done when the zero value isn't good enough and you need
 to set some default field values for instance.
 
@@ -341,7 +341,7 @@ Resources:
 ## Composition vs inheritance
 \label{sec:struct_composition}
 
- Coming from an [OOP](http://en.wikipedia.org/wiki/Object-oriented_programming) background a lot of us are used to inheritance, something that isn't supported by Go.
+Coming from an [OOP](http://en.wikipedia.org/wiki/Object-oriented_programming) background a lot of us are used to inheritance, something that isn't supported by Go.
 Instead you have to think in terms of composition and interfaces.
 
 The Go team wrote a [short but good segment](http://golang.org/doc/effective_go.html#embedding) on this topic.
@@ -451,7 +451,7 @@ func main() {
 	fmt.Printf(
 		"Id: %d, Name: %s, Location: %s, Game id: %d\n",
 		p.Id, p.Name, p.Location, p.GameId)
-	// Directly set a field define on the Player struct
+	// Directly set a field defined on the Player struct
 	p.Id = 11
 	fmt.Printf("%+v", p)
 }
@@ -567,12 +567,12 @@ func main() {
 * [See in Playground](http://play.golang.org/p/mq3r9H9szz)
 
 Note that you still need to set the logger and that's often a good
-reason to use a constructor (custom constructor are used when you need
+reason to use a constructor (custom constructors are used when you need
 to set a structure before using a value, see (Section~\ref{sec:custom_constructors}) ).
 What is really nice with the implicit composition is that it allows to
 easily and cheaply make your structs implement interfaces.
 Imagine that you have a function that takes variables implementing an
-interface with the `Print` method. My adding `*log.Logger` to your
+interface with the `Print` method. By adding `*log.Logger` to your
 struct (and initializing it properly), your struct is now implementing
 the interface without you writing any custom methods.
 
