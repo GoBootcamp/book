@@ -347,7 +347,7 @@ Instead you have to think in terms of composition and interfaces.
 The Go team wrote a [short but good segment](http://golang.org/doc/effective_go.html#embedding) on this topic.
 
 Composition (or embedding) is a well understood concept for most OOP programmers and Go supports it,
-here is an example of the problem it's addressing:
+here is an example of the problem it's solving:
 
 ```go
 package main
@@ -377,7 +377,7 @@ func main() {
 }
 ```
 
-* [See in Playground](http://play.golang.org/p/kR-Cue8816)
+* [See in Playground](https://play.golang.org/p/Mqtjn5PPsW)
 
 
 The above example demonstrates a classic OOP challenge,
