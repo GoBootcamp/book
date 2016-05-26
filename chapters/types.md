@@ -361,8 +361,10 @@ type User struct {
 }
 
 type Player struct {
-	User
-	GameId         int
+	Id       int
+	Name     string
+	Location string
+	GameId	 int
 }
 
 func main() {
