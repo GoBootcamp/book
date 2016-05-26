@@ -310,7 +310,7 @@ func main() {
 }
 ```
 
-`Pi` is exported and can be accessed from outside the page, while `pi`
+`Pi` is exported and can be accessed from outside the package, while `pi`
 isn't available.
 
 
