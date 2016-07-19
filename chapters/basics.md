@@ -404,19 +404,21 @@ If the result parameters are named, a return statement without arguments returns
 
 
 ```go
-func location(name, city string) (region, continent string) {
+func location(city string) (region, continent string) {
 	switch city {
-	case "New York", "LA", "Chicago":
-		continent = "North America"
+	case "Los Angeles", "LA", "Santa Monica":
+		region, continent = "California", "North America"
+	case "New York", "NYC":
+		region, continent = "New York", "North America"
 	default:
-		continent = "Unknown"
+		region, continent = "Unknown", "Unknown"
 	}
 	return
 }
 
 func main() {
-	region, continent := location("Matt", "LA")
-	fmt.Printf("%s lives in %s", region, continent)
+	region, continent := location("Santa Monica")
+	fmt.Printf("Matt lives in %s, %s", region, continent)
 }
 ```
 
