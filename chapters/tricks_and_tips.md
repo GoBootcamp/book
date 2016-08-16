@@ -531,7 +531,7 @@ func main() {
     i := 2
     fmt.Println(SoSayethThe(i))
 }
-```
+
 
 // output:
 // cannot use i (type int) as type Stereotype in argument to SoSayethThe
