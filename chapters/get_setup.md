@@ -12,7 +12,7 @@ Using `Terminal.app` install homebrew:
 
 Once homebrew is installed, install Go to be able to crosscompile:
 
-    $ brew install go --cross-compile-common
+    $ brew install go
 
 In just a few minutes, go should be all installed and you should
 be almost ready to code. However we need to do two small things before
