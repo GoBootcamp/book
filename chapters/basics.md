@@ -94,8 +94,8 @@ func main() {
 
 [See in Playground](http://play.golang.org/p/S0Gq-tSESX)
 
-Outside a function, every construct begins with a keyword (`var`,
-`func`, and so on) and the `:=` construct is not available.
+Barring a function, every construct begins with a keyword (`var`,
+`func`, and so on). The `:=` short declaration is not available inside a construct.
 
 
 * [Go's declaration
