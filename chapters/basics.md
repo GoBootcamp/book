@@ -420,6 +420,7 @@ func main() {
 	region, continent := location("Santa Monica")
 	fmt.Printf("Matt lives in %s, %s", region, continent)
 }
+
 ```
 
 * [See in Playground](http://play.golang.org/p/aX92mw7USF)
