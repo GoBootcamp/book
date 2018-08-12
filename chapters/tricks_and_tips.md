@@ -100,7 +100,7 @@ implement (due to a lack of generics, you do need to do that for most
 types, which can be cumbersome).
 
 ```go
-// UniqStr returns a copy if the passed slice with only unique string results.
+// UniqStr returns a copy of the passed slice with only unique string results.
 func UniqStr(col []string) []string {
 	m := map[string]struct{}{}
 	for _, v := range col {
