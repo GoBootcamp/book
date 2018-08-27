@@ -733,7 +733,7 @@ Implement WordCount.
 package main
 
 import (
-    "code.google.com/p/go-tour/wc"
+    "golang.org/x/tour/wc"
 )
 
 func WordCount(s string) map[string]int {
@@ -760,7 +760,7 @@ You might find [strings.Fields](http://golang.org/pkg/strings/#Fields) helpful.
 package main
 
 import (
-	"code.google.com/p/go-tour/wc"
+	"golang.org/x/tour/wc"
 	"strings"
 )
 

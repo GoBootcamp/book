@@ -439,7 +439,7 @@ to the range that the walking is over.
 package main
 
 import (
-	"code.google.com/p/go-tour/tree"
+	"golang.org/x/tour/tree"
 	"fmt"
 )
 
