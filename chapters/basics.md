@@ -141,7 +141,6 @@ func main() {
 	fmt.Println(Greeting)
 	fmt.Println(Pi)
 	fmt.Println(Truth)
-	fmt.Println(Big)
 }
 ```
 
